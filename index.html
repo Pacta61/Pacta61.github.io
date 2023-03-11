@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="esp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
+    <script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
+    <title>Investigacion de Operaciones</title>
+</head>
+<body>
+    <nav class="nav-bar">
+        <ul>
+            <li><a><i class="fa-solid fa-chart-line"></i>Metodo grafico</a></li>
+            <li><a>Simplex</a></li>
+            <li><img src="./uas.png" alt="Error"></li>
+        </ul>
+    </nav>
+    <aside class="aside" >
+            <div class="tipo">
+                    <div class="tipo-radio" style="border-right: 1px solid white;"> Minimizar</div>
+                    <div class="tipo-radio" > Maximizar</div>
+            </div>
+            <div class="funcion">
+                <div class="funcion-title"> Funciones: </div>
+                <div class="content-coords"><input class="val" contenteditable="true" id="y" type="text"maxlength="3" >X + 
+                    <input class="val" contenteditable="true" id="x" type="text"maxlength="3" >Y =
+                    <input class="val" contenteditable="true" id="x" type="text"maxlength="3" >
+                    <button class="funcion-btn"><i class="fa-sharp fa-solid fa-paper-plane"></i></button> 
+                    
+                </div>
+                <div class="content-funciones">
+                    <span class="content-funciones-funcion">3x+5y=10<i class="fa-solid fa-trash"></i></span>
+                </div>
+                <button  id="btn" class="btn" onclick="crearGrafica()"> Crear grafica</button>
+                
+            </div>
+            
+    </aside>
+    <div id="root" >
+        <div id="jxgbox" class="jxgbox" style="margin: auto;  width:94%; height:90vh">
+        </div>
+    </div>
+</body>
+<script src="./main.js"></script>
+<script src="https://kit.fontawesome.com/1c637ee8ed.js" crossorigin="anonymous"></script>
+</script>
+</html>

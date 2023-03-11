@@ -1,0 +1,234 @@
+body{
+    overflow: hidden;
+}
+.nav-bar{
+    position: fixed;
+    width: 100%;
+    z-index: 10000;
+    border: 2px solid #121624;
+    position:relative;
+    display:block;
+}
+
+ul{
+    font-size: 15px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #282830;
+    width: 100%;
+    display: block;
+    border: 2px solide red;
+    align-items: center; 
+    font-weight: bold;
+}
+li{
+
+    display: inline;
+    width: 100%;
+    color: white;
+    margin-left: 5px;
+}
+a:hover{
+    background-color: #514e5c;
+}
+a{
+    display: inline-block; 
+    padding: 15px;
+    color: #fff;
+    text-decoration: none; 
+}
+a i{
+    padding-right: 10px;
+    font-size: 15px;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+li img{
+    width: 30px;
+    height: 40px;
+    position: absolute;
+    right: 5px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+.aside{
+    width: 30%;
+    background-color: #9cb4d5;
+    height: 100vh;
+    position: absolute;
+    display: flex;
+    border: 2px solid #113c46;
+    border-radius: 2px;
+    z-index: 100;
+    box-sizing: border-box;
+}
+.aside-functions{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+    text-align: center;
+    
+}
+.val{
+    height: 15px;
+    width: 24px;
+    font-size: 15px;
+    border: 2px solid #545667;
+    border-radius: 4px;
+    margin: 4px;
+    text-align: center;
+    background-color: #e5e5e5;
+    
+}
+.val:focus{
+    outline: none;
+}
+#root{
+    background-color: antiquewhite;
+    width: 70%;
+    height: 100vh;
+    position: absolute;
+    right: 0px;
+    padding: 4px;
+    box-sizing: border-box;
+    border: 2px solid #c6a08b;
+}
+
+
+.content-coords{
+ position: absolute;
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+ flex-wrap: wrap;
+ top: 30px;
+ left: 0;
+ font-weight: bold;
+}
+
+.btn {
+    -webkit-transition-duration: 0.4s; 
+    transition-duration: 0.4s;
+    border-radius: 4px;
+    border: none;
+    background-color: #70c6f9;
+    font-size: 13px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    padding: 5px;
+    height: 24px;
+    position: relative;
+    top: 100px;
+    margin: 8px;
+}
+
+.btn:hover {
+    background-color: #46adea; 
+
+}
+.funcion-title{
+    margin: 5px;
+    display: block;
+    width: 100%;
+    align-items: center;
+    position: absolute;
+}
+.funcion{
+    top: 50px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    position: absolute;
+    
+}
+
+
+.tipo-radio{
+    min-width: 50%;
+    min-height: 30px;
+    font-size: 19px;
+    top: 0px;
+    position: relative;
+    align-items: center;
+    padding: 5px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.tipo{
+    display: flex;
+    margin: -2px;
+    min-width: 100%;
+    border: 2px solid #252525;
+    min-height: 30px;
+    height: 5%;
+    z-index: 10100;
+    justify-content: space-around;
+    background-color: #262d35;
+    color: white;
+    border-radius: 2px;
+    font-size: 10px;
+}
+.tipo-radio:hover{
+    background-color: #2f3338;
+    outline: 1px solid #1c5e67;
+    border-radius: 2px;
+}
+.tipo div{
+    font-size: 16px;
+}
+.content-funciones{
+    height: 100px;
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    margin: 5px;
+    border-radius: 8px;
+    position: relative;
+    top: 70px;
+    padding: 4px;
+}
+.funcion-btn{
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    border: none;
+    margin: 5px;
+}
+div i{
+    width: 8px;
+    height: 8px;
+    position: relative;
+    left: -0.3em;
+    top: 0.1em;
+    color:#252525;
+}
+.funcion-btn:hover{
+    border: 1px solid rgb(17, 108, 220);
+}
+.content-funciones-funcion{
+    border: 1px solid #3f7a8a;
+    display: block;
+    border-radius: 4px;
+    margin: 4px 0px;
+    font-family: monospace; 
+    font-size: 14px;
+    font-weight: 550;
+    height: 22px;
+    align-items: center;
+    padding: 2px;
+    box-sizing: border-box;
+    color: #363636;
+    font-style: italic;
+    letter-spacing: 3px;
+
+}
+.content-funciones-funcion i{
+    position: relative;
+    float: right;
+    color: #8caab2;
+}
+.content-funciones-funcion i:hover{
+    color: #42b7da;
+}
