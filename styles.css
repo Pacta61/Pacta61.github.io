@@ -74,14 +74,16 @@ li img{
 }
 .val{
     height: 15px;
-    width: 24px;
-    font-size: 15px;
+    width: 70%;
+    font-size: 13px;
     border: 2px solid #545667;
     border-radius: 4px;
     margin: 4px;
-    text-align: center;
     background-color: #e5e5e5;
-    
+    letter-spacing: 3px;
+    font-family: monospace;
+    font-weight: 550;
+    color: #363636;
 }
 .val:focus{
     outline: none;
@@ -107,6 +109,7 @@ li img{
  top: 30px;
  left: 0;
  font-weight: bold;
+ width: 100%;
 }
 
 .btn {
@@ -120,7 +123,7 @@ li img{
     padding: 5px;
     height: 24px;
     position: relative;
-    top: 100px;
+    top: 500px;
     margin: 8px;
 }
 
@@ -183,11 +186,12 @@ li img{
     width: 100%;
     background-color: white;
     box-sizing: border-box;
-    margin: 5px;
+    margin: 15px;
     border-radius: 8px;
     position: relative;
-    top: 70px;
+    top: 20px;
     padding: 4px;
+    overflow-y: scroll;
 }
 .funcion-btn{
     width: 26px;
@@ -222,6 +226,7 @@ div i{
     color: #363636;
     font-style: italic;
     letter-spacing: 3px;
+    z-index: 10000;
 
 }
 .content-funciones-funcion i{
@@ -231,4 +236,29 @@ div i{
 }
 .content-funciones-funcion i:hover{
     color: #42b7da;
+}
+.content-funciones::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.content-funciones::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.content-funciones::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.content-funciones::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.content-funciones::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.content-funciones::-webkit-scrollbar-track {
+    border-radius: 10px;  
 }
