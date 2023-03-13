@@ -10,7 +10,7 @@
         this.value= newValue;
     }
     connectedCallback(){
-        this.innerHTML = `<div id="${this.getAttribute("num")}" class="content-funciones-funcion ">${this.getAttribute('funcion')}<i id="${this.getAttribute("num")}" class="fa-solid fa-trash"></i></div>`;
+        this.innerHTML = `<div id="${this.getAttribute("num")}" class="content-funciones-funcion ">${this.getAttribute('funcion')}<i  id="${this.getAttribute("num")}" class="fa-solid fa-trash borrar"></i></div>`;
     }
 
  }

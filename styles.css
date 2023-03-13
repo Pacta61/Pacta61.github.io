@@ -262,3 +262,21 @@ div i{
 .content-funciones::-webkit-scrollbar-track {
     border-radius: 10px;  
 }
+
+.val:invalid{
+    animation: shake 300ms;
+    color: rgb(217, 70, 70);
+}
+
+
+@keyframes shake {
+    25%{
+        transform: translateX(4px);
+    }
+    50%{
+        transform: translateX(-4px);
+    }
+    75%{
+        transform: translateX(4px);
+    }
+}

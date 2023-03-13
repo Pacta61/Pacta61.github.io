@@ -15,19 +15,28 @@ function crearGrafica(){
 var x = 0;
 const btn = document.getElementById('funcion-btn')
 btn.addEventListener("click",(e)=>{
-    const content = document.querySelector('.content-funciones');
-    const element = document.createElement('crear-funcion');
-    const input = document.getElementById('funcion-input')
-    element.setAttribute("funcion",input.value)
-    element.setAttribute("num",x)
-    content.appendChild(element);
-    input.value = '';
-    x++;
+    const input2 = document.querySelector("#funcion-input");
+    const re = new RegExp("([0-9]+([A-Za-z]?))\\+([0-9]+([A-Za-z]?))(<|>)[0-9]{1,4}","g");
+    if(re.test(input2.value)){
+        const content = document.querySelector('.content-funciones');
+        const element = document.createElement('crear-funcion');
+        const input = document.getElementById('funcion-input')
+        element.setAttribute("funcion",input.value)
+        element.setAttribute("num",x)
+        content.appendChild(element);
+        input.value = '';
+        x++;
+    }
+    
 })
 const content = document.querySelector('.content-funciones');
 
 content.addEventListener("click",(e)=>{
     const element = document.getElementById(e.target.id)
-    element.remove();
+    console.log(e.target.className)
+    if(e.target.className == "fa-solid fa-trash borrar"){
+        element.remove();
+    }
+    
 },0)
 
