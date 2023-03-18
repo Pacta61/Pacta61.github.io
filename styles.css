@@ -213,8 +213,9 @@ div i{
 }
 .content-funciones-funcion{
     border: 1px solid #3f7a8a;
-    display: block;
+    display: flex;
     border-radius: 4px;
+    align-items: center;
     margin: 4px 0px;
     font-family: monospace; 
     font-size: 14px;
@@ -227,13 +228,32 @@ div i{
     font-style: italic;
     letter-spacing: 3px;
     z-index: 10000;
+    position: relative;
+    justify-content: space-between;
 
 }
 .content-funciones-funcion i{
     position: relative;
-    float: right;
+    right: 0px;
     color: #8caab2;
+    top: -3px;
+    
+    
 }
+.color{
+    background-color: red;
+    position: relative;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    
+}
+.text-funcion{
+    width: calc(100% - 16px);
+    margin-left: 5px;
+   
+}
+
 .content-funciones-funcion i:hover{
     color: #42b7da;
 }

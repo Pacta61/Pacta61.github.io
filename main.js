@@ -1,20 +1,31 @@
 //Crear grafica
 const b = JXG.JSXGraph.initBoard('jxgbox', { 
-    boundingbox: [-1, 10, 10, -1], axis:true
+    boundingbox: [-1, 10, 10, -1], axis:true, showCopyright: false, grid: true 
 });
 
 function crearGrafica(){
     const b = JXG.JSXGraph.initBoard('jxgbox', { 
-        boundingbox: [-1, 10, 10, -1], axis:true
+        boundingbox: [-1, 19, 19, -1], axis:true, showCopyright: false, grid: true 
     });
     let valores = calcularRectas();  
+    let rectas = []
     valores.forEach(element => {
-        b.create('line',[[element[0],0],[0,element[1]]], {straightFirst:false, straightLast:false, strokeWidth:2,strokeColor:'#6942a8'});
+        rectas.push(b.create('line',[[element[0],0],[0,element[1]]], {straightFirst:false, straightLast:false, strokeWidth:2,strokeColor:colores[element[2]]}));
     });
- 
+    //Calculando intersecciones
+    let intersecciones = []
+    for (let i = 0; i < rectas.length; i++) {
+        for (let j = i+1; j < rectas.length; j++) {
+            intersecciones.push(b.create('intersection', [rectas[i], rectas[j], 0],{size: 2}).coords.usrCoords);
+            
+        }
+        
+    }
+    console.log(intersecciones)
 
-    calcularRectas();
 }
+var colores = ["#ffd22c","#121d7a","#7ef25c","#82005f","#37231b","#a20c31",
+"#ff8369","#2099d8","#82b800","#fa6d5e","#1b1507","#ff0096","#252525"]
 var estado = 0;
 var functions = [];
 var x = 0;
@@ -28,8 +39,9 @@ btn.addEventListener("click",(e)=>{
         const input = document.getElementById('funcion-input')
         element.setAttribute("funcion",input.value)
         element.setAttribute("num",x)
+        element.setAttribute("color",colores[x])
         content.appendChild(element);
-        functions.push(convertirFuncion(input2.value));
+        functions.push(convertirFuncion(input2.value,x));
         input.value = '';
         x++;
     }
@@ -50,11 +62,11 @@ content.addEventListener("click",(e)=>{
 },0)
 
 
-const convertirFuncion= (fun)=>{
+const convertirFuncion= (fun,x)=>{
     let res, aux
     (estado == 0)? res = fun.split("<"):res = fun.split(">");
     aux= res[0].split("+").map((elem)=>{return elem.substr(0,elem.length-1)});
-    aux.push(res[1]);
+    aux.push(res[1],x);
     return aux;
 }
 
@@ -62,7 +74,9 @@ const convertirFuncion= (fun)=>{
 const calcularRectas = ()=>{
     let resul = [];
     functions.forEach(elem => {
-        resul.push([elem[2]/elem[0],elem[2]/elem[1]]);
+        resul.push([elem[2]/elem[0],elem[2]/elem[1],elem[3]]);
     });
+    console.log(resul);
     return resul;
 }
+
