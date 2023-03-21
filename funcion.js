@@ -1,3 +1,4 @@
+ //Se declara el componente para insertar funciones
  class component extends HTMLElement {
     constructor(){
         super();

@@ -84,9 +84,11 @@ li img{
     font-family: monospace;
     font-weight: 550;
     color: #363636;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .val:focus{
     outline: none;
+
 }
 #root{
     background-color: antiquewhite;
@@ -149,8 +151,8 @@ li img{
 
 
 .tipo-radio{
-    min-width: 50%;
-    min-height: 30px;
+    min-width: calc(50% - 2px);
+    min-height: calc(100% - 1 px);
     font-size: 19px;
     top: 0px;
     position: relative;
@@ -158,28 +160,33 @@ li img{
     padding: 5px;
     text-align: center;
     box-sizing: border-box;
+    border-radius: 3px;
 }
 .tipo{
     display: flex;
-    margin: -2px;
-    min-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
     border: 2px solid #252525;
-    min-height: 30px;
-    height: 5%;
-    z-index: 10100;
-    justify-content: space-around;
+    height: 30px;
+    justify-content: center;
     background-color: #262d35;
     color: white;
     border-radius: 2px;
     font-size: 10px;
+    position: relative;
+    top:  -3px;
+    
 }
+
+
 .tipo-radio:hover{
     background-color: #2f3338;
     outline: 1px solid #1c5e67;
-    border-radius: 2px;
+    box-sizing: border-box;
 }
+
 .tipo div{
-    font-size: 16px;
+    font-size: 15px;
 }
 .content-funciones{
     height: 100px;
@@ -192,6 +199,7 @@ li img{
     top: 20px;
     padding: 4px;
     overflow-y: scroll;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .funcion-btn{
     width: 26px;
@@ -199,6 +207,7 @@ li img{
     border-radius: 50%;
     border: none;
     margin: 5px;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 div i{
     width: 8px;
@@ -218,7 +227,7 @@ div i{
     align-items: center;
     margin: 4px 0px;
     font-family: monospace; 
-    font-size: 14px;
+    font-size: 1em;
     font-weight: 550;
     height: 22px;
     align-items: center;
@@ -299,4 +308,11 @@ div i{
     75%{
         transform: translateX(4px);
     }
+}
+span{
+    border: 1px solid rgb(7, 7, 58);
+    border-radius: 4px;
+    background-color: #f5f6f7;
+    font-size: 1em;
+    
 }
