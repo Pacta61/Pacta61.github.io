@@ -4,12 +4,20 @@ const b = JXG.JSXGraph.initBoard('jxgbox', {
 });
 //Genera la grafica e intersecciones
 function crearGrafica(){
+    let valores = calcularRectas();
+    let max = obtenerMaxNum(valores)
     const b = JXG.JSXGraph.initBoard('jxgbox', { 
-        boundingbox: [-1, 10, 10, -1], 
+        boundingbox: [(max /10)*-1, max+(max/10),   max+(max/10),(max/10)*-1 ], 
         axis:true, showCopyright: false, 
-        grid: false 
+        grid: false ,
+        drag: {
+            enabled: false  
+          }
+
     });
-    let valores = calcularRectas();  
+      
+   
+    obtenerMinNum(valores);
     let rectas = []
     valores.forEach(element => {
         rectas.push(b.create('line',[[element[0],0],[0,element[1]]], {
@@ -108,4 +116,22 @@ function removeAllChilds(a)
  {
  while(a.hasChildNodes())
 	a.removeChild(a.firstChild);	
+ }
+ const obtenerMaxNum = (a)=>{
+    let max  = 0,aux;
+    a.forEach(elem => {
+        aux = Math.max(elem[0],elem[1]);
+        max = (aux>max)?aux:max;
+    });
+    console.log(max);
+    return max;
+ }
+ const obtenerMinNum = (a)=>{
+    let min  = 1000,aux;
+    a.forEach(elem => {
+        aux = Math.min(elem[0],elem[1]);
+        min = (aux<min)?aux:min;
+    });
+    console.log(min);
+    return min;
  }
