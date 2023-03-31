@@ -1,6 +1,6 @@
 //Crear grafica
 const b = JXG.JSXGraph.initBoard('jxgbox', { 
-    boundingbox: [-1, 10, 10, -1], axis:true, showCopyright: false, grid: false 
+    boundingbox: [-1, 10, 10, -1,'#E6F2FF'], axis:true, showCopyright: false, grid: false 
 });
 //Genera la grafica e intersecciones
 function crearGrafica(){
@@ -15,16 +15,24 @@ function crearGrafica(){
           }
 
     });
+    b.defaultAxes.x.ticks = b.defaultAxes.y.ticks = 10
       
    
     obtenerMinNum(valores);
     let rectas = []
+    let points = []
     valores.forEach(element => {
-        rectas.push(b.create('line',[[element[0],0],[0,element[1]]], {
+        let p2 = b.create('point',[0,element[1]],{size: 2,Color:'#9a080b'})
+        let p1 = b.create('point',[element[0],0],{size: 2,Color:'#9a080b'})
+        rectas.push(b.create('line',[p1,p2], {
             straightFirst:false, 
             straightLast:false, 
             strokeWidth:2,
             strokeColor:colores[element[2]]}));
+            points.push(p1);
+            points.push(p2);
+            console.log(points);
+
     });
     //Calculando intersecciones
     let intersecciones = []
@@ -35,6 +43,7 @@ function crearGrafica(){
         }
         
     }
+    
 
 }
 var colores = ["#ffd22c","#121d7a","#7ef25c","#82005f","#37231b","#a20c31",

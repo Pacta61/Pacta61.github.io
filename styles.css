@@ -125,7 +125,7 @@ li img{
     padding: 5px;
     height: 24px;
     position: relative;
-    top: 500px;
+    top: 300px;
     margin: 8px;
 }
 
@@ -138,7 +138,8 @@ li img{
     display: block;
     width: 100%;
     align-items: center;
-    position: absolute;
+    font-weight: 550;
+    font-size: 14px;
 }
 .funcion{
     top: 50px;
@@ -315,4 +316,99 @@ span{
     background-color: #f5f6f7;
     font-size: 1em;
     
+}
+.content-res{
+    height: 150px;
+    width: 100%;
+    background-color: white;
+    box-sizing: border-box;
+    margin: 15px;
+    border-radius: 8px;
+    position: relative;
+    top: 20px;
+    padding: 4px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+   
+
+}
+.content-res-title{
+    font-size: 14px;
+    margin: 3px;
+    text-align: center;
+    height: 15px;
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+}
+.content-res-input{
+    height: 15px;
+    width: 100%;
+    font-size: 13px;
+    border: 2px solid #545667;
+    border-radius: 4px;
+    margin: 4px;
+    background-color: #fffdfd;
+    letter-spacing: 3px;
+    font-family: monospace;
+    font-weight: 550;
+    color: #363636;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    position: relative;
+    
+}
+input:focus{
+    outline: none;
+}
+.content-z{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 6px;
+    font-size: 18px;
+    position: relative;
+    top: -15px;
+}
+.res-sustitucion{
+    width: 100%;
+    font-family: monospace; 
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 550;
+    letter-spacing: 3px;
+    overflow: hidden;
+    margin: 2px;
+    display: block;
+    height: 15px;
+    color: #03172e;
+
+    
+}
+.content-res::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.content-res::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.content-res::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.content-res::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.content-res::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.content-res::-webkit-scrollbar-track {
+    border-radius: 10px;  
 }

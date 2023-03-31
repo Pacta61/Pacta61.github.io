@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <link rel="shortcut icon" href="uas.png">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraph.css" />
     <script type="text/javascript" charset="UTF-8" src="https://cdn.jsdelivr.net/npm/jsxgraph/distrib/jsxgraphcore.js"></script>
@@ -24,16 +25,21 @@
                     <div id="tipo2" class="tipo-radio" > Maximizar</div>
             </div>
             <div class="funcion">
-                <div class="funcion-title"> Funciones: </div>
+                <div class="content-z">
+                    <div> Ƶ:  </div>
+                    <input class="content-res-input" type="text">
+                </div>
+                
                 
                 <div class="content-coords">
+                    <div class="funcion-title"> Inecuaciones: </div>
                     <input  id="funcion-input" class="val" contenteditable="true" id="y" type="text"maxlength="20" placeholder="1x+2y≤3" 
                     pattern="([0-9]+([A-Za-z]))\+([0-9]+([A-Za-z]))(<|>)[0-9]{1,4}">
 
 
                     <button id="funcion-btn" class="funcion-btn" ><i class="fa-sharp fa-solid fa-paper-plane"></i></button> 
-                    <div class="content-funciones"> 
-                    </div>
+                    <div class="content-funciones"></div>
+                   
                 </div>
                 <button  id="btn" class="btn" onclick="crearGrafica()" > Crear grafica</button>
             </div>
