@@ -103,17 +103,29 @@ li img{
 
 
 .content-coords{
- position: absolute;
+ position:relative;
  display: flex;
  align-items: center;
  justify-content: space-around;
- flex-wrap: wrap;
- top: 30px;
+ top: 5px;
  left: 0;
  font-weight: bold;
  width: 100%;
+ gap: 2px   ;
 }
-
+select{
+    font-size: 13px;
+    border: 2px solid #545667;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: 550;
+    color: #363636;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+select:focus{
+    outline: none;
+}
 .btn {
     -webkit-transition-duration: 0.4s; 
     transition-duration: 0.4s;
@@ -134,12 +146,12 @@ li img{
 
 }
 .funcion-title{
-    margin: 5px;
-    display: block;
     width: 100%;
     align-items: center;
     font-weight: 550;
     font-size: 14px;
+    position: relative;
+    text-align: center;
 }
 .funcion{
     top: 50px;
@@ -203,13 +215,27 @@ li img{
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 .funcion-btn{
-    width: 26px;
-    height: 26px;
+    box-sizing: border-box;
+    max-width: 26px;
+    max-height: 26px;
+    min-width: 26px;
+    min-height: 26px;
     border-radius: 50%;
     border: none;
     margin: 5px;
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+   
 }
+.aside-title{
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 8px;
+    font-weight: 700;
+    font-size: 20px;
+    margin-bottom: 25px;
+}
+
 div i{
     width: 8px;
     height: 8px;
@@ -220,6 +246,7 @@ div i{
 }
 .funcion-btn:hover{
     border: 1px solid rgb(17, 108, 220);
+    box-sizing: border-box;
 }
 .content-funciones-funcion{
     border: 1px solid #3f7a8a;
@@ -411,4 +438,46 @@ input:focus{
 
 .content-res::-webkit-scrollbar-track {
     border-radius: 10px;  
+}
+.content-table{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 15px;
+    padding: 15px;
+    flex-wrap: wrap;
+}   
+table{
+    position: relative;
+    width: 100%;
+}
+tr td{
+    width: 25%;
+    border: 2px solid black;
+    font-size: 1em;
+    
+}
+@media screen and (max-width: 600px) {
+    body{
+        overflow: scroll;
+    }
+    .aside{
+        width: 100%;
+        position: relative;
+        background-color: rgb(244, 242, 239);
+        border: none;
+        top: 48px;
+        
+    }
+    #root{
+        width: 100%;
+        background-color: rgb(244, 242, 239);
+        border: none;
+    }
+    .nav-bar{
+        position: fixed;
+        
+    }
 }

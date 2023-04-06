@@ -20,27 +20,48 @@
         </ul>
     </nav>
     <aside class="aside" >
-            <div class="tipo">
-                    <div id="tipo1" class="tipo-radio" > Minimizar</div>
-                    <div id="tipo2" class="tipo-radio" > Maximizar</div>
-            </div>
+      <p class="aside-title">Metodo Grafico</p>
             <div class="funcion">
                 <div class="content-z">
                     <div> Ƶ:  </div>
                     <input class="content-res-input" type="text">
+                    X <sub>1 </sub>+
+                    <input class="content-res-input" type="text">
+                    X <sub> 2 </sub>
                 </div>
                 
                 
-                <div class="content-coords">
-                    <div class="funcion-title"> Inecuaciones: </div>
-                    <input  id="funcion-input" class="val" contenteditable="true" id="y" type="text"maxlength="20" placeholder="1x+2y≤3" 
-                    pattern="([0-9]+([A-Za-z]))\+([0-9]+([A-Za-z]))(<|>)[0-9]{1,4}">
-
-
-                    <button id="funcion-btn" class="funcion-btn" ><i class="fa-sharp fa-solid fa-paper-plane"></i></button> 
-                    <div class="content-funciones"></div>
-                   
-                </div>
+                <div>
+                  <div class="funcion-title"> Inecuaciones: </div>
+                    <form class="content-coords">
+                      <input id="x1" class="content-res-input" type="text">
+                      X <sub>1 </sub>+
+                      <input id="x2" class="content-res-input" type="text">
+                      X <sub> 2 </sub>
+                      <select id="op" name="select">
+                        <option value="≥">≥</option>
+                        <option value="≤">≤</option>
+                        <option value="=">=</option>
+                      </select>
+                      <input id="res" class="content-res-input" type="text">
+                      <button id="funcion-btn" class="funcion-btn" ><i class="fa-sharp fa-solid fa-paper-plane"></i></button> 
+                    </form>
+                    
+                    
+              </div>
+              <div class="content-funciones"></div>
+              <div class="content-table">
+                <table>
+                  <tr>
+                    <td>Punto</td>
+                    <td>Cordenada X <sub>1</sub></td>
+                    <td>Cordenada X <sub>2</sub></td>
+                    <td>Valor en Ƶ</td>
+                  </tr>
+                </table>
+              </div>
+              
+             
                 <button  id="btn" class="btn" onclick="crearGrafica()" > Crear grafica</button>
             </div>
     </aside>
