@@ -1,3 +1,10 @@
+const z_x1 = document.getElementById("z-x1");
+const z_x2 = document.getElementById("z-x2");
+const x1 = document.querySelector("#x1");
+const x2 = document.querySelector("#x2");
+const op = document.querySelector("#op");
+const res = document.querySelector("#res");
+
 //Crear grafica
 const b = JXG.JSXGraph.initBoard("jxgbox", {
   boundingbox: [-1, 10, 10, -1, "#E6F2FF"],
@@ -47,14 +54,15 @@ function crearGrafica() {
   let intersecciones = [];
   for (let i = 0; i < rectas.length; i++) {
     for (let j = i + 1; j < rectas.length; j++) {
-      intersecciones.push(
+      points.push(
         b.create("intersection", [rectas[i], rectas[j], 0], {
           size: 2,
           Color: "#9a080b",
-        }).coords.usrCoords
+        })
       );
     }
   }
+  crearTabla(points);
 }
 var colores = [
   "#ffd22c",
@@ -78,29 +86,26 @@ const btn = document.getElementById("funcion-btn");
 //Agregar funcion
 btn.addEventListener("click", (e) => {
   e.preventDefault();
-  const x1 = document.querySelector("#x1").value;
-  const x2 = document.querySelector("#x2").value;
-  const op = document.querySelector("#op").value;
-  const res = document.querySelector("#res").value;
+  if (validarInputs()) {
+    const content = document.querySelector(".content-funciones");
+    const element = document.createElement("crear-funcion");
+    const input = document.getElementById("funcion-input");
+    element.setAttribute(
+      "funcion",
+      `${x1.value}X<sub>1</sub> + ${x2.value}X<sub>2</sub> ${op.value} ${res.value}`
+    );
+    element.setAttribute("num", x);
+    element.setAttribute("color", colores[x]);
+    content.appendChild(element);
+    functions.push([x1.value, x2.value, res.value, x, op.value]);
+    document.querySelector("#x1").value = "";
+    document.querySelector("#x2").value = "";
+    document.querySelector("#op").value = "";
+    document.querySelector("#res").value = "";
+    x++;
 
-  const content = document.querySelector(".content-funciones");
-  const element = document.createElement("crear-funcion");
-  const input = document.getElementById("funcion-input");
-  element.setAttribute(
-    "funcion",
-    `${x1}X<sub>1</sub> + ${x2}X<sub>2</sub> ${op} ${res}`
-  );
-  element.setAttribute("num", x);
-  element.setAttribute("color", colores[x]);
-  content.appendChild(element);
-  functions.push([x1, x2, res, x, op]);
-  document.querySelector("#x1").value = "";
-  document.querySelector("#x2").value = "";
-  document.querySelector("#op").value = ""; 
-  document.querySelector("#res").value = "";
-  x++;
-
-  console.log(functions);
+    console.log(functions);
+  }else  alert("Debe rellenar todos los campos")
 });
 const content = document.querySelector(".content-funciones");
 
@@ -162,4 +167,45 @@ const obtenerMinNum = (a) => {
   });
   console.log(min);
   return min;
+};
+
+const crearTabla = (point) => {
+  const tabla = document.querySelector(".tabla");
+
+  tabla.innerHTML = ` 
+  <thead>
+  <tr>
+  <th>Punto</th>
+  <th>Cordenada X <sub>1</sub></th>
+  <th>Cordenada X <sub>2</sub></th>
+  <th>Valor en Ƶ</th>
+</tr>
+  </thead>
+`;
+  point.forEach((element) => {
+    tabla.innerHTML += ` 
+    <tr>
+    <td>${element.name}</td>
+    <td>${element.coords.usrCoords[1].toFixed(2)}</td>
+    <td>${element.coords.usrCoords[2].toFixed(2)}</td>
+    <td>${
+      (z_x1.value * element.coords.usrCoords[1].toFixed(2) +
+      z_x2.value * element.coords.usrCoords[2].toFixed(2)).toFixed(2)
+    }</td>
+  </tr>`;
+  });
+};
+
+const validarInputs = () => {
+  let re = new RegExp('[0-9]+');
+  if (
+    z_x1.value.length > 0 && re.test( z_x1.value)&&
+    z_x2.value.length > 0 && re.test( z_x2.value)&&
+    x1.value.length > 0 && re.test( x1.value)&&
+    x2.value.length > 0 && re.test( x2.value)&&
+    op.value.length > 0 && 
+    res.value.length > 0 && re.test( res.value)
+  ) {
+    return true;
+  } else return false;
 };

@@ -1,13 +1,13 @@
 body{
-    overflow: hidden;
+    background-color: #cce6ec;
 }
 .nav-bar{
     position: fixed;
     width: 100%;
-    z-index: 10000;
+    z-index: 109000;
     border: 2px solid #121624;
-    position:relative;
     display:block;
+    
 }
 
 ul{
@@ -53,16 +53,19 @@ li img{
     margin-right: 10px;
     margin-top: 5px;
 }
-.aside{
-    width: 30%;
-    background-color: #9cb4d5;
-    height: 100vh;
-    position: absolute;
+.content-page{
     display: flex;
-    border: 2px solid #113c46;
-    border-radius: 2px;
-    z-index: 100;
+    flex-wrap: nowrap;
+}
+.aside{
+    
+    width: 30%;
+    background-color: #cce6ec;
+    position: relative;
+    top: 48px;
+    display: flex;
     box-sizing: border-box;
+   
 }
 .aside-functions{
     width: 100%;
@@ -91,14 +94,14 @@ li img{
 
 }
 #root{
-    background-color: antiquewhite;
+    top: 48px;
+    background-color: #cce6ec;
     width: 70%;
     height: 100vh;
-    position: absolute;
+    position: relative;
     right: 0px;
     padding: 4px;
     box-sizing: border-box;
-    border: 2px solid #c6a08b;
 }
 
 
@@ -137,8 +140,8 @@ select:focus{
     padding: 5px;
     height: 24px;
     position: relative;
-    top: 300px;
-    margin: 8px;
+    margin:auto;
+    margin-top: 10px;
 }
 
 .btn:hover {
@@ -234,6 +237,8 @@ select:focus{
     font-weight: 700;
     font-size: 20px;
     margin-bottom: 25px;
+    height: 20px;
+    position: absolute;
 }
 
 div i{
@@ -320,7 +325,7 @@ div i{
     border-radius: 10px;  
 }
 
-.val:invalid{
+input[type="text"]:invalid{
     animation: shake 300ms;
     color: rgb(217, 70, 70);
 }
@@ -414,67 +419,80 @@ input:focus{
 
     
 }
-.content-res::-webkit-scrollbar {
+.content-res,.content-table::-webkit-scrollbar {
     -webkit-appearance: none;
 }
 
-.content-res::-webkit-scrollbar:vertical {
+.content-res,.content-table::-webkit-scrollbar:vertical {
     width:10px;
 }
 
-.content-res::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+.content-res,.content-table::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
     display: none;
 } 
 
-.content-res::-webkit-scrollbar:horizontal {
+.content-res,.content-table::-webkit-scrollbar:horizontal {
     height: 10px;
 }
 
-.content-res::-webkit-scrollbar-thumb {
+.content-res,.content-table::-webkit-scrollbar-thumb {
     background-color: #797979;
     border-radius: 20px;
     border: 2px solid #f1f2f3;
 }
 
-.content-res::-webkit-scrollbar-track {
+.content-res,.content-table::-webkit-scrollbar-track {
     border-radius: 10px;  
 }
-.content-table{
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    top: 15px;
-    padding: 15px;
-    flex-wrap: wrap;
-}   
 table{
-    position: relative;
+    margin: 15px;
+    margin-top: 4px;
+    top: 15px;
+    height: 120px;
+    overflow: scroll;
+    overflow-x: hidden;
     width: 100%;
-}
-tr td{
-    width: 25%;
-    border: 2px solid black;
-    font-size: 1em;
+}   
+
+ 
+  th, td {
+    padding: .5em;
+    background: #ddd;
+    border-bottom: 2px solid white; 
+    text-align: center;
     
+  }
+  thead {
+    position: sticky;
+    top: 0;
 }
+th{
+    background-color: #03172e;
+    color: white;
+    font-size: 14px;
+    z-index: 100;
+
+}
+
 @media screen and (max-width: 600px) {
-    body{
-        overflow: scroll;
+    .content-page{
+        flex-wrap: wrap;
     }
     .aside{
         width: 100%;
         position: relative;
-        background-color: rgb(244, 242, 239);
+        background-color: #cce6ec;
         border: none;
         top: 48px;
+        border: 2px  solid saddlebrown;
         
     }
     #root{
         width: 100%;
-        background-color: rgb(244, 242, 239);
+        background-color:#cce6ec;
         border: none;
+        position: relative;
+        top: 120vh;
     }
     .nav-bar{
         position: fixed;
