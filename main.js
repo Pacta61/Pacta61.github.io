@@ -15,6 +15,7 @@ const b = JXG.JSXGraph.initBoard("jxgbox", {
 //Genera la grafica e intersecciones
 function crearGrafica() {
   let valores = calcularRectas();
+  console.log(valores);
   let max = obtenerMaxNum(valores);
   const b = JXG.JSXGraph.initBoard("jxgbox", {
     boundingbox: [
@@ -32,12 +33,42 @@ function crearGrafica() {
   });
   b.defaultAxes.x.ticks = b.defaultAxes.y.ticks = 10;
 
-  obtenerMinNum(valores);
   let rectas = [];
   let points = [];
+  let isEqual = false;
+  let poligonos = [];
+  let poligonos2p = [];
+  let cord00 = b.create("point", [0, 0], { size: 2, Color: "#9a080b" });
+  let cord99 = b.create("point", [1000, 1000], { size: 2, Color: "#9a080b" });
+  let cord09 = b.create("point", [0, 1000], { size: 2, Color: "#9a080b" });
+  let cord90 = b.create("point", [1000, 0], { size: 2, Color: "#9a080b" });
+  points.push(cord00);
   valores.forEach((element) => {
     let p2 = b.create("point", [0, element[1]], { size: 2, Color: "#9a080b" });
     let p1 = b.create("point", [element[0], 0], { size: 2, Color: "#9a080b" });
+    if (element[3] == "≤") {
+      poligonos.push(
+        b.create("polygon", [p1, cord00, p2], { fillColor: "green" })
+      );
+    } else if (element[3] == "≥") {
+      poligonos.push(
+        b.create("polygon", [p1, cord90, cord99, cord09, p2], {
+          fillColor: "green",
+        })
+      );
+    } else if (element[3] == "=") {
+      isEqual = true;
+      poligonos2p.push(
+        b.create("polygon", [p1, p2,], {
+          fillColor: "green",
+          borders: {
+            color: "green",
+            opacity: 0.2,
+            strokeWidth: 8,
+          },
+        })
+      );
+    }
     rectas.push(
       b.create("line", [p1, p2], {
         straightFirst: false,
@@ -48,9 +79,84 @@ function crearGrafica() {
     );
     points.push(p1);
     points.push(p2);
-    console.log(points);
   });
-  //Calculando intersecciones
+  //calcula la region Factible
+  if (rectas.length > 1) {
+      var zonaFactible = b.create(
+        "polygon",
+        poligonos[0].intersect(poligonos[1]),
+        {
+          fillColor: "green",
+          size: 2,
+        }
+      );
+    }
+  //crea intersecciones entre los poligonos
+  if (rectas.length > 2) {
+    for (let i = 2; i < poligonos.length; i++) {
+      let aux = zonaFactible.intersect(poligonos[i]);
+
+      let puntosPoly = zonaFactible.childElements;
+      let puntosPolyKeys = Object.keys(puntosPoly);
+      puntosPolyKeys.forEach((element) => {
+        puntosPoly[element].setAttribute({ size: 2, color: "#9a080b" });
+      });
+      zonaFactible.remove();
+      zonaFactible = b.create(
+          "polygon",
+          aux,
+          {
+            fillColor: "green",
+            size: 2,
+          }
+        );
+      
+    }
+  }
+//crea las interseccines con la funciones = 
+if(isEqual){
+  for(let i = 0;i<poligonos2p.length;i++){
+    let aux2 = zonaFactible.intersect(poligonos2p[i]);
+    let puntosPoly = zonaFactible.childElements;
+      let puntosPolyKeys = Object.keys(puntosPoly);
+      puntosPolyKeys.forEach((element) => {
+        puntosPoly[element].setAttribute({ size: 2, color: "#9a080b" });
+      });
+    zonaFactible.remove();
+    zonaFactible = b.create(
+      "polygon",
+      aux2,
+      {
+        fillColor: "green",
+        size: 2,
+        borders: {
+          color: "green",
+          opacity: 0.2,
+          strokeWidth: 8,
+        }
+      }
+    );
+  }
+}
+
+//elimina Poligonos
+  if (rectas.length > 1 ) {
+    b.suspendUpdate();
+    poligonos.forEach((element) => {
+      b.removeObject(element, true);
+    });
+    poligonos2p.forEach((element) => {
+      b.removeObject(element, true);
+    });
+    b.unsuspendUpdate();
+    b.update();
+    puntosPoly = zonaFactible.childElements;
+    puntosPolyKeys = Object.keys(puntosPoly);
+    puntosPolyKeys.forEach((element) => {
+      puntosPoly[element].setAttribute({ size: 2, color: "#9a080b" });
+    });
+  }
+  //calcula intersecciones
   let intersecciones = [];
   for (let i = 0; i < rectas.length; i++) {
     for (let j = i + 1; j < rectas.length; j++) {
@@ -62,12 +168,15 @@ function crearGrafica() {
       );
     }
   }
+  points = points.filter(
+    (p) => p.coords.usrCoords[1] >= 0 && p.coords.usrCoords[2] >= 0
+  );
   crearTabla(points);
 }
+
 var colores = [
   "#ffd22c",
   "#121d7a",
-  "#7ef25c",
   "#82005f",
   "#37231b",
   "#a20c31",
@@ -77,6 +186,7 @@ var colores = [
   "#fa6d5e",
   "#1b1507",
   "#ff0096",
+  "#7ef25c",
   "#252525",
 ];
 var estado = 0;
@@ -103,9 +213,7 @@ btn.addEventListener("click", (e) => {
     document.querySelector("#op").value = "";
     document.querySelector("#res").value = "";
     x++;
-
-    console.log(functions);
-  }else  alert("Debe rellenar todos los campos")
+  } else alert("Debe rellenar todos los campos");
 });
 const content = document.querySelector(".content-funciones");
 
@@ -116,9 +224,13 @@ content.addEventListener(
     const element = document.getElementById(e.target.id);
     if (e.target.className == "fa-solid fa-trash borrar") {
       element.remove();
-      functions[e.target.id] = null;
-      functions = functions.filter((el) => el !== null);
+      functions.map((element, pos) => {
+        if (element[3] == e.target.id) {
+          functions[pos] = null;
+        }
+      });
     }
+    functions = functions.filter((el) => el !== null);
   },
   0
 );
@@ -138,7 +250,7 @@ const convertirFuncion = (fun, x) => {
 const calcularRectas = () => {
   let resul = [];
   functions.forEach((elem) => {
-    resul.push([elem[2] / elem[0], elem[2] / elem[1], elem[3]]);
+    resul.push([elem[2] / elem[0], elem[2] / elem[1], elem[3], elem[4]]);
   });
   console.log(resul);
   return resul;
@@ -155,7 +267,6 @@ const obtenerMaxNum = (a) => {
     aux = Math.max(elem[0], elem[1]);
     max = aux > max ? aux : max;
   });
-  console.log(max);
   return max;
 };
 const obtenerMinNum = (a) => {
@@ -165,7 +276,6 @@ const obtenerMinNum = (a) => {
     aux = Math.min(elem[0], elem[1]);
     min = aux < min ? aux : min;
   });
-  console.log(min);
   return min;
 };
 
@@ -188,23 +298,28 @@ const crearTabla = (point) => {
     <td>${element.name}</td>
     <td>${element.coords.usrCoords[1].toFixed(2)}</td>
     <td>${element.coords.usrCoords[2].toFixed(2)}</td>
-    <td>${
-      (z_x1.value * element.coords.usrCoords[1].toFixed(2) +
-      z_x2.value * element.coords.usrCoords[2].toFixed(2)).toFixed(2)
-    }</td>
+    <td>${(
+      z_x1.value * element.coords.usrCoords[1].toFixed(2) +
+      z_x2.value * element.coords.usrCoords[2].toFixed(2)
+    ).toFixed(2)}</td>
   </tr>`;
   });
 };
 
 const validarInputs = () => {
-  let re = new RegExp('[0-9]+');
+  let re = new RegExp("[0-9]+");
   if (
-    z_x1.value.length > 0 && re.test( z_x1.value)&&
-    z_x2.value.length > 0 && re.test( z_x2.value)&&
-    x1.value.length > 0 && re.test( x1.value)&&
-    x2.value.length > 0 && re.test( x2.value)&&
-    op.value.length > 0 && 
-    res.value.length > 0 && re.test( res.value)
+    z_x1.value.length > 0 &&
+    re.test(z_x1.value) &&
+    z_x2.value.length > 0 &&
+    re.test(z_x2.value) &&
+    x1.value.length > 0 &&
+    re.test(x1.value) &&
+    x2.value.length > 0 &&
+    re.test(x2.value) &&
+    op.value.length > 0 &&
+    res.value.length > 0 &&
+    re.test(res.value)
   ) {
     return true;
   } else return false;

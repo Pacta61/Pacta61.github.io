@@ -141,7 +141,7 @@ select:focus{
     height: 24px;
     position: relative;
     margin:auto;
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 .btn:hover {
@@ -445,15 +445,19 @@ input:focus{
     border-radius: 10px;  
 }
 table{
-    margin: 15px;
-    margin-top: 4px;
-    top: 15px;
-    height: 120px;
-    overflow: scroll;
-    overflow-x: hidden;
     width: 100%;
+    top: 0;
+    margin: 0;
 }   
+.content-table{
+    height: 250px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin: auto;
+    margin-top: 20px;
+    padding: 0;
 
+}
  
   th, td {
     padding: .5em;
@@ -492,10 +496,13 @@ th{
         background-color:#cce6ec;
         border: none;
         position: relative;
-        top: 120vh;
+        top: 105vh;
     }
     .nav-bar{
         position: fixed;
         
+    }
+    .content-table{
+        width: 105%;
     }
 }
