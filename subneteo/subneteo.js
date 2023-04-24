@@ -52,21 +52,22 @@ function subnetear(ip,num_subredes) {
     }
     return numero === 1;
   }
-
+var tabla
 
 function crearTabla(ip,num){
-
-
-    let datos = subnetear(ip,num);
- new gridjs.Grid({
+if(typeof(tabla)== 'object') {
+  tabla.destroy();
+}  
+ tabla = new gridjs.Grid({
       pagination: {
           limit: 10,
           enabled: true,
           summary: false
       },
       columns: ['ID',"Direccion de subred", "Rango", "Broadcast"],
-      data: datos,
+      data: subnetear(ip,num),
       style: {
+        
           td: {
             border: '1px solid #ccc',
             background: '#ddd'
@@ -77,12 +78,8 @@ function crearTabla(ip,num){
           th:{
               background: 'black',
               color: '#fff'
-          },
-          thead: {
-              position: 'sticky',
-              top: 0
           }
         }
     }).render(document.getElementById("example-table"));
-    
+    console.log(tabla)
   }
