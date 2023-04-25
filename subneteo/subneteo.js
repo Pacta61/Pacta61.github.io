@@ -66,7 +66,7 @@ function subnetear(ip,num_subredes) {
             id: i+1,
              subid:`${clave}.${id_subred.split('.')[0]}`,
              rango: `${clave}.${(num_subredes<128)?parseInt(rango1[0])+parseInt(rango1[2]):rango1[0]} - ${clave}.${(num_subredes<128)?rango2[0]-1:rango2[0]}`,
-            broadcast: `${clave}.${id_subred.split('.')[0]}`
+            broadcast: `${clave}.${rango2[0]}`
         })
         }
       
