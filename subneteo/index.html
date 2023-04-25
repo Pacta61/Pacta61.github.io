@@ -1,104 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="./subneteo.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://unpkg.com/tabulator-tables@5.4.4/dist/css/tabulator.min.css"
+      rel="stylesheet"
+    />
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/tabulator-tables@5.4.4/dist/js/tabulator.min.js"
+    ></script>
     <title>Subneteo</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="App">
-        <div class="App">
-            <div class="content">
-              <div class="content-img">
-                <img src='/uas.png' alt="" />
-              </div>
-              <p class="content-title"> SUBNETEO DE REDES IPV4</p>
-              <form class="content-form" action="">
-                <div class="content-inputs">
-                  <label htmlFor=""> ID de red:</label>
-                  <input id="ip" class="content-form-input" type="text" name="" id="" />
-                </div>
-                <div class="content-inputs">
-                  <label htmlFor=""> Mascara de red:</label>
-                  <input  class="content-form-input" type="text" name="" id="Mascara" />
-                </div>
-                <div class="content-inputs">
-                  <label htmlFor="">Numero de subredes:</label>
-                  <select id="opc1" class="content-form-input opc" name="select">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="4">4</option>
-                    <option value="8">8</option>
-                    <option value="16">16</option>
-                    <option value="32">32</option>
-                    <option value="64">64</option>
-                    <option value="128">128</option>
-                    <option value="256">256</option>
-                    <option value="512">512</option>
-                    <option value="1024">1024</option>
-                    <option value="2048">2048</option>
-                    <option value="4096">4096</option>
-                    <option value="8192">8192</option>
-                    <option value="16384">16384</option>
-                    <option value="32768">32768</option>
-                    <option value="65536">65536</option>
-                    <option value="131072">131072</option>
-                    <option value="262144">262144</option>
-                    <option value="524288">524288</option>
-                    <option value="1048576">1048576</option>
-                    <option value="2097152">2097152</option>
-                    <option value="4194304">4194304</option>
-                  </select>
-                </div>
-                <div class="content-inputs">
-                  <label htmlFor="">Host por subred:</label>
-                  <select id="opc2" class="content-form-input opc"  name="select" >
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="4">4</option>
-                    <option value="8">8</option>
-                    <option value="16">16</option>
-                    <option value="32">32</option>
-                    <option value="64">64</option>
-                    <option value="128">128</option>
-                    <option value="256">256</option>
-                    <option value="512">512</option>
-                    <option value="1024">1024</option>
-                    <option value="2048">2048</option>
-                    <option value="4096">4096</option>
-                    <option value="8192">8192</option>
-                    <option value="16384">16384</option>
-                    <option value="32768">32768</option>
-                    <option value="65536">65536</option>
-                    <option value="131072">131072</option>
-                    <option value="262144">262144</option>
-                    <option value="524288">524288</option>
-                    <option value="1048576">1048576</option>
-                    <option value="2097152">2097152</option>
-                    <option value="4194304">4194304</option>
-                  </select>
-                </div>
-               
-                <input class="content-form-btn" type="submit" value="Calcular" />  
-                <div class="content-inputs">
-                  <label htmlFor=""> Mascara de subred:</label>
-                  <input id="mascara-subred" class="content-form-input" type="text" name="" id="" />
-                </div>   
-                         
-              </form>
-
+      <div class="App">
+        <div class="content">
+          <div class="content-img">
+            <img src="/uas.png" alt="" />
+          </div>
+          <p class="content-title">SUBNETEO DE REDES IPV4</p>
+          <form class="content-form" action="">
+            <div class="content-inputs">
+              <label htmlFor=""> ID de red:</label>
+              <input
+                id="ip"
+                class="content-form-input"
+                type="text"
+                name=""
+                id=""
+              />
             </div>
-          </div>  
-          <div id="example-table"></div> 
+            <div class="content-inputs">
+              <label htmlFor=""> Mascara de red:</label>
+              <input
+                class="content-form-input"
+                type="text"
+                name=""
+                id="Mascara"
+              />
+            </div>
+            <div class="content-inputs">
+              <label htmlFor="">Numero de subredes:</label>
+              <select id="opc1" class="content-form-input opc" name="select">
+                
+              </select>
+            </div>
+            <div class="content-inputs">
+              <label htmlFor="">Host por subred:</label>
+              <select
+                id="opc2"
+                class="content-form-input opc"
+                name="select"
+              ></select>
+            </div>
+
+            <input class="content-form-btn" type="submit" value="Calcular" />
+            <div class="content-inputs">
+              <label htmlFor=""> Mascara de subred:</label>
+              <input
+                id="mascara-subred"
+                class="content-form-input"
+                type="text"
+                name=""
+                id=""
+              />
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="example-table"></div>
     </div>
     <script src="./main.js"></script>
-    
-</body>
+  </body>
 </html>

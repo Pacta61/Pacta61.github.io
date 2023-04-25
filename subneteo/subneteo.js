@@ -30,12 +30,12 @@ function subnetear(ip,num_subredes) {
       let hostRed = num_host*i
         id_subred = convertirIP(hostRed);
  
-      info.push([
-        i+1,
-         `${clave}.${id_subred}`,
-         `${clave}.${convertirIP(hostRed+1)} - ${clave}.${convertirIP(hostRed+(num_host-2))}`,
-        `${clave}.${convertirIP(hostRed+(num_host-1))}`
-      ])
+      info.push({
+        id: i+1,
+         subid:`${clave}.${id_subred}`,
+         rango: `${clave}.${convertirIP(hostRed+1)} - ${clave}.${convertirIP(hostRed+(num_host-2))}`,
+        broadcast: `${clave}.${convertirIP(hostRed+(num_host-1))}`
+    })
         
     }
     return info
@@ -55,31 +55,17 @@ function subnetear(ip,num_subredes) {
 var tabla
 
 function crearTabla(ip,num){
-if(typeof(tabla)== 'object') {
-  tabla.destroy();
-}  
- tabla = new gridjs.Grid({
-      pagination: {
-          limit: 10,
-          enabled: true,
-          summary: false
-      },
-      columns: ['ID',"Direccion de subred", "Rango", "Broadcast"],
-      data: subnetear(ip,num),
-      style: {
-        
-          td: {
-            border: '1px solid #ccc',
-            background: '#ddd'
-          },
-          table: {
-            'font-size': '15px'
-          },
-          th:{
-              background: 'black',
-              color: '#fff'
-          }
-        }
-    }).render(document.getElementById("example-table"));
-    console.log(tabla)
+  var tabledata = subnetear(ip,num)
+  //create Tabulator on DOM element with id "example-table"
+  var table = new Tabulator("#example-table", {
+      height:300, // set height of table (in CSS or here), this enables the Virtual DOM and improves render speed dramatically (can be any valid css height value)
+      data:tabledata, //assign data to table
+      layout:"fitColumns", //fit columns to width of table (optional)
+      columns:[ //Define Table Columns
+      {title:"id", field:"id"},
+      {title:"subred", field:"subid"},
+      {title:"Rango", field:"rango"},
+      {title:"Broadcast", field:"broadcast"},
+      ],
+  });
   }
