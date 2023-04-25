@@ -158,7 +158,7 @@ btn.addEventListener("click", (e) => {
         if(subredes.value<=256){
             mascaraSubred.value = `${mask}.${((host.value*(subredes.value-1))/256)/256}.0` 
         }else{
-            mascaraSubred.value = `${mask}.255.${((subredes.value-(subredes.value%256))/256)%256}` 
+            mascaraSubred.value = `${mask}.255.${(((subredes.value-1)*host.value)/256)%256}` 
         }
        
 
