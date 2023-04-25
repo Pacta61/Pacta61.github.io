@@ -40,7 +40,7 @@ function subnetear(ip,num_subredes) {
     let num_host = Math.pow(2,24)/num_subredes
     
     for (let i = 0; i < num_subredes; i++) {
-      let hostRed = num_host*i
+        let hostRed = num_host*i
         id_subred = convertirIP(hostRed);
         if(clase <= 127){
           info.push({
