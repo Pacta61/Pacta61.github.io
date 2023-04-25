@@ -1,6 +1,7 @@
 
 
 
+
 const convertirIP = (num)=>{
   let x1 = num%256;
   if(num<=255){
@@ -17,8 +18,20 @@ return res;
 function subnetear(ip,num_subredes) {
 
     var ip = ip.split('.');
-    let clave = ip[0]
+    let clave 
     let info = []
+
+    let clase = ip[0];
+    if(clase <= 127){
+      clave = clase;
+    }else if(clase <= 191){
+      ip.pop()
+      ip.pop()
+      clave = ip.join('.');
+    }else if(clase <= 223){
+      ip.pop()
+      clave = ip.join('.');
+    }
     
     while(!esPotenciaDeDos(num_subredes)){
         num_subredes++;
@@ -29,13 +42,34 @@ function subnetear(ip,num_subredes) {
     for (let i = 0; i < num_subredes; i++) {
       let hostRed = num_host*i
         id_subred = convertirIP(hostRed);
- 
-      info.push({
-        id: i+1,
-         subid:`${clave}.${id_subred}`,
-         rango: `${clave}.${convertirIP(hostRed+1)} - ${clave}.${convertirIP(hostRed+(num_host-2))}`,
-        broadcast: `${clave}.${convertirIP(hostRed+(num_host-1))}`
-    })
+        if(clase <= 127){
+          info.push({
+            id: i+1,
+             subid:`${clave}.${id_subred}`,
+             rango: `${clave}.${convertirIP(hostRed+1)} - ${clave}.${convertirIP(hostRed+(num_host-2))}`,
+            broadcast: `${clave}.${convertirIP(hostRed+(num_host-1))}`
+        })
+        }else if(clase <= 191){
+          let rango1 = convertirIP(hostRed+1).split('.')
+          let rango2 = convertirIP(hostRed+(num_host-2)).split('.')
+          info.push({
+            id: i+1,
+             subid:`${clave}.${id_subred.split('.')[0]}.${id_subred.split('.')[1]}`,
+             rango: `${clave}.${rango1[0]}.${(num_subredes<32768)?parseInt(rango1[1])+parseInt(rango1[2]):rango1[1]} - ${clave}.${rango2[0]}.${(num_subredes<256)?rango2[2]:(num_subredes<32768)?rango2[1]-1:rango2[1]}`,
+            broadcast: `${clave}.${rango2[0]}.${rango2[1]}`
+        })
+          
+        }else if(clase <= 223){
+          let rango1 = convertirIP(hostRed+1).split('.')
+          let rango2 = convertirIP(hostRed+(num_host-2)).split('.')
+          info.push({
+            id: i+1,
+             subid:`${clave}.${id_subred.split('.')[0]}`,
+             rango: `${clave}.${(num_subredes<128)?parseInt(rango1[0])+parseInt(rango1[2]):rango1[0]} - ${clave}.${(num_subredes<128)?rango2[0]-1:rango2[0]}`,
+            broadcast: `${clave}.${id_subred.split('.')[0]}`
+        })
+        }
+      
         
     }
     return info
