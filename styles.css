@@ -1,11 +1,11 @@
 body{
-    background-color: #cce6ec;
+    background-color: #8fcad6;
 }
 .nav-bar{
     position: fixed;
     width: 100%;
     z-index: 109000;
-    border: 2px solid #121624;
+    border: 2px solid #151515;
     display:block;
     
 }
@@ -15,7 +15,7 @@ ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
-    background-color: #282830;
+    background-color: #202020;
     width: 100%;
     display: block;
     border: 2px solide red;
@@ -140,8 +140,9 @@ select:focus{
     padding: 5px;
     height: 24px;
     position: relative;
-    margin:auto;
-    margin-top: 15px;
+    margin: auto;
+    margin-top: 20px;
+    
 }
 
 .btn:hover {
@@ -162,6 +163,7 @@ select:focus{
     display: flex;
     flex-wrap: wrap;
     position: absolute;
+    align-items: center;
     
 }
 
@@ -450,13 +452,13 @@ table{
     margin: 0;
 }   
 .content-table{
+    background-color: #cce6ec;
     height: 250px;
     overflow-y: scroll;
     overflow-x: hidden;
-    margin: auto;
-    margin-top: 20px;
-    padding: 0;
-
+    width: 100%;
+    position: relative;
+    margin: 15px;
 }
  
   th, td {

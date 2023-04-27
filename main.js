@@ -15,7 +15,6 @@ const b = JXG.JSXGraph.initBoard("jxgbox", {
 //Genera la grafica e intersecciones
 function crearGrafica() {
   let valores = calcularRectas();
-  console.log(valores);
   let max = obtenerMaxNum(valores);
   const b = JXG.JSXGraph.initBoard("jxgbox", {
     boundingbox: [
@@ -39,9 +38,9 @@ function crearGrafica() {
   let poligonos = [];
   let poligonos2p = [];
   let cord00 = b.create("point", [0, 0], { size: 2, Color: "#9a080b" });
-  let cord99 = b.create("point", [1000, 1000], { size: 2, Color: "#9a080b" });
-  let cord09 = b.create("point", [0, 1000], { size: 2, Color: "#9a080b" });
-  let cord90 = b.create("point", [1000, 0], { size: 2, Color: "#9a080b" });
+  let cord99 = b.create("point", [90000, 90000], { size: 2, Color: "#9a080b" });
+  let cord09 = b.create("point", [0, 90000], { size: 2, Color: "#9a080b" });
+  let cord90 = b.create("point", [90000, 0], { size: 2, Color: "#9a080b" });
   points.push(cord00);
   valores.forEach((element) => {
     let p2 = b.create("point", [0, element[1]], { size: 2, Color: "#9a080b" });
@@ -81,7 +80,7 @@ function crearGrafica() {
     points.push(p2);
   });
   //calcula la region Factible
-  if (rectas.length > 1) {
+  if (rectas.length > 1 && poligonos.length >1) {
       var zonaFactible = b.create(
         "polygon",
         poligonos[0].intersect(poligonos[1]),
@@ -92,6 +91,16 @@ function crearGrafica() {
       );
     }
   //crea intersecciones entre los poligonos
+  if(isEqual && poligonos2p.length > 1){
+    zonaFactible = b.create(
+      "polygon",
+      poligonos2p[0].intersect(poligonos2p[1]),
+      {
+        fillColor: "green",
+        size: 2,
+      }
+    );
+  }
   if (rectas.length > 2) {
     for (let i = 2; i < poligonos.length; i++) {
       let aux = zonaFactible.intersect(poligonos[i]);
@@ -114,7 +123,7 @@ function crearGrafica() {
     }
   }
 //crea las interseccines con la funciones = 
-if(isEqual){
+if(isEqual && poligonos.length > 1){
   for(let i = 0;i<poligonos2p.length;i++){
     let aux2 = zonaFactible.intersect(poligonos2p[i]);
     let puntosPoly = zonaFactible.childElements;
@@ -138,7 +147,6 @@ if(isEqual){
     );
   }
 }
-
 //elimina Poligonos
   if (rectas.length > 1 ) {
     b.suspendUpdate();
@@ -252,7 +260,6 @@ const calcularRectas = () => {
   functions.forEach((elem) => {
     resul.push([elem[2] / elem[0], elem[2] / elem[1], elem[3], elem[4]]);
   });
-  console.log(resul);
   return resul;
 };
 const tipoMin = document.getElementById("tipo1");
