@@ -349,6 +349,7 @@ span{
     border-radius: 4px;
     background-color: #f5f6f7;
     font-size: 1em;
+    display: none;
     
 }
 .content-res{
