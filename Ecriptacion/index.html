@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Metodos de ecriptacion</title>
+  </head>
+  <body>
+    <div class="formulario">
+      <h1 class="form-title">Cifrados Simetricos y Asimetrios</h1>
+      <form action="" class="form">
+        <div class="form-content-inputs">
+          <label for="form-select">Metodo de cifrado: </label>
+          <select onchange="limpiarInputs()" name="" id="form-select">
+            <option value="1">Cifrado monoalfabetico</option>
+            <option value="2">Cifrado por bloques simple</option>
+            <option value="3">Cifrado RSA</option>
+          </select>
+        </div>
+        <div class="form-content-inputs">
+          <label for="form-textoClaro">Texto en claro: </label>
+          <input type="text" name="" id="form-textoClaro" />
+        </div>
+        <div class="form-content-inputs">
+          <label for="form-textoCifrado">Texto cifrado: </label>
+          <input type="text" name="" id="form-textoCifrado" />
+        </div>
+        <div class="form-content-inputs">
+          <label for="form-textoDescifradi">Texto Decifrado: </label>
+          <input type="text" name="" id="form-textoDecifrado" />
+          <button class="btn-icon"><i class="fa-solid fa-font"></i></button>
+        </div>
+        <div class="form-content-inputs">
+          <label for="form-k">K: </label>
+          <input type="number" id="form-k" style="width: 40%" />
+        </div>
+        <div class="form-content-inputs">
+          <label for="form-patron">P y Q: </label>
+          <input
+            type="text"
+            id="form-patron"
+            style="width: 40%"
+            placeholder="p , q"
+          />
+        </div>
+        <div class="form-content-inputs">
+          <label for="form-metodo">Metodo: </label>
+          <textarea name="" id="form-metodo" cols="30" rows="10"></textarea>
+        </div>
+        <div class="form-content-inputs">
+          <div class="form-content-btns">
+            <button id="btn-cifrar" type="button">Cifrar</button>
+            <button id="btn-decifrar" type="button">Decifrar</button>
+            <button type="button">Ver tabla</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </body>
+  <script src="/main.js"></script>
+  <script src="./metodos.js"></script>
+  <script
+    src="https://kit.fontawesome.com/1c637ee8ed.js"
+    crossorigin="anonymous"
+  ></script>
+</html>

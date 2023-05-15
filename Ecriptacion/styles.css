@@ -1,0 +1,128 @@
+body {
+  padding: 2rem;
+  margin: 0;
+  background: rgb(17, 129, 201);
+  background: linear-gradient(
+    105deg,
+    rgba(17, 129, 201, 0.9248074229691877) 17%,
+    rgba(137, 226, 249, 1) 66%,
+    rgba(7, 213, 255, 1) 100%
+  );
+  background-size: cover;
+  font-family: sans-serif;
+  background-position: center;
+  overflow: hidden;
+}
+.formulario {
+  width: 70%;
+  height: 90vh;
+  margin: auto;
+  color: white;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  border: 1.5px solid rgba(209, 213, 219, 0.2);
+  box-shadow: 2px 2px 2px 2px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+}
+input[type="text"],
+input[type="number"] {
+  width: 90%;
+  height: 20px;
+  margin-top: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  border: 1px solid rgb(83, 81, 81);
+  padding: 2px;
+  font-size: 0.9rem;
+}
+#form-select {
+  width: 90%;
+  height: 24px;
+  margin-top: 15px;
+  position: relative;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  border: 1px solid rgb(83, 81, 81);
+}
+label {
+  color: #252525;
+  font-weight: 550;
+}
+input[type="text"],
+input[type="number"]:focus {
+  outline: 1px solid gray;
+}
+#form-select:focus {
+  outline: 1px solid gray;
+}
+.form {
+  display: grid;
+  grid-template-columns: repeat(2, 10fr);
+  align-content: center;
+  align-items: center;
+  grid-gap: 30px;
+  box-sizing: border-box;
+}
+.form-select {
+  height: 20px;
+  color: #252525;
+}
+#form-select {
+  color: #252525;
+  font-size: 0.9rem;
+}
+option {
+  color: #252525;
+  font-size: 0.9rem;
+}
+.form-title {
+  text-align: center;
+  height: 1em;
+  width: 100%;
+  font-weight: 1000;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+#form-metodo {
+  width: 100%;
+}
+button {
+  width: 100px;
+  height: 25px;
+  background: #00212e;
+  border: 1px solid #0d0b30;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-weight: 700;
+}
+button:hover {
+  background-color: #183a47;
+}
+.form-content-btns {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1);
+  grid-gap: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-icon {
+  display: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.btn-icon:hover {
+  color: #fff;
+}
+.btn-icon i {
+  position: relative;
+  margin-right: 22px;
+}
