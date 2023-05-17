@@ -11,7 +11,6 @@ body {
   background-size: cover;
   font-family: sans-serif;
   background-position: center;
-  overflow: hidden;
 }
 .formulario {
   width: 70%;
@@ -113,16 +112,74 @@ button:hover {
   justify-content: center;
 }
 
-.btn-icon {
+#btn-icon {
   display: none;
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-}
-.btn-icon:hover {
-  color: #fff;
-}
-.btn-icon i {
+  background-color: #0d0b30;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
   position: relative;
-  margin-right: 22px;
+  right: 28px;
+  bottom: 1px;
+  box-sizing: border-box;
+}
+#btn-icon::before {
+  position: relative;
+  left: 5px;
+  top: 2px;
+  font-size: 14px;
+}
+#tabla {
+  margin: 50px auto;
+  color: transparent;
+  overflow-x: scroll;
+  max-width: 70%;
+}
+#tabla table {
+  margin: auto;
+  background-color: white;
+  border-collapse: collapse;
+}
+td {
+  color: black;
+  border-right: 1px solid black;
+  padding: 4px;
+}
+
+.th {
+  background-color: #12192e;
+  color: white;
+  position: sticky;
+  left: 0;
+  z-index: 1000;
+}
+tr {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+}
+#tabla::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+#tabla::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+#tabla::-webkit-scrollbar-button:increment,
+.contenedor::-webkit-scrollbar-button {
+  display: none;
+}
+
+#tabla::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+#tabla::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+#tabla::-webkit-scrollbar-track {
+  border-radius: 10px;
 }

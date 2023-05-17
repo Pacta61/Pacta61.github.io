@@ -29,8 +29,10 @@
         </div>
         <div class="form-content-inputs">
           <label for="form-textoDescifradi">Texto Decifrado: </label>
-          <input type="text" name="" id="form-textoDecifrado" />
-          <button class="btn-icon"><i class="fa-solid fa-font"></i></button>
+          <div id="content-btn-icon">
+            <input type="text" name="" id="form-textoDecifrado" />
+            <i id="btn-icon" class="fa-solid fa-a"></i>
+          </div>
         </div>
         <div class="form-content-inputs">
           <label for="form-k">K: </label>
@@ -53,11 +55,12 @@
           <div class="form-content-btns">
             <button id="btn-cifrar" type="button">Cifrar</button>
             <button id="btn-decifrar" type="button">Decifrar</button>
-            <button type="button">Ver tabla</button>
+            <button id="btn-verTabla" type="button">Ver tabla</button>
           </div>
         </div>
       </form>
     </div>
+    <div id="tabla"></div>
   </body>
   <script src="/main.js"></script>
   <script src="./metodos.js"></script>

@@ -11,7 +11,7 @@ function metodoPorBloques(str, k) {
 }
 
 function desencriptarBloques(str) {
-  let aux = encriptarBloques(str, tablaBinaria, "d").join("");
+  let aux = str.join("");
   while (aux.length % 8 > 0) {
     aux = aux.slice(1);
   }
@@ -25,6 +25,11 @@ function desencriptarBloques(str) {
 function asciiToChar(nums) {
   return nums.map((e) => {
     return String.fromCharCode(e);
+  });
+}
+function charToAscii(str) {
+  return str.split("").map((e) => {
+    return e.charCodeAt(0);
   });
 }
 function encriptarBloques(bloques, tabla, opc) {
@@ -165,4 +170,22 @@ function MCD(a, b) {
     a = temp;
   }
   return a;
+}
+
+function mostrarTabla(tabla) {
+  return `<table>
+            <tr>
+              <td class="th" >Claro  </td>
+              ${tabla[0].map((e) => {
+                return `<td>${e}</td>`;
+              })}
+            </tr>
+            <tr>
+              <td class="th">Cifrado  </td>
+              ${tabla[1].map((e) => {
+                return `<td>${e}</td>`;
+              })}
+            </tr>
+          </table>
+  `;
 }
