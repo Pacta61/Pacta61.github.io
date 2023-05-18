@@ -10,6 +10,7 @@ let btnTabla = document.getElementById("btn-verTabla");
 let contentTable = document.getElementById("tabla");
 let btnText = document.querySelector(".btn-icon");
 let icon = document.getElementById("btn-icon");
+let contentProc = document.getElementById("form-proc");
 let tablaBinaria;
 
 k.addEventListener("change", function () {
@@ -24,6 +25,7 @@ btnCifrar.addEventListener("click", () => {
   if (metodo.value == 3) {
     textCifrado.value = "";
     const [p, q] = dataPQ.value.split(",");
+    contentProc.innerHTML = procRSA(p, q);
     let textClaro2 = textClaro.value.split("");
     let aux = [];
     textClaro2.map((e) => {
@@ -35,10 +37,12 @@ btnCifrar.addEventListener("click", () => {
     textCifrado.value = metodoMonoAlfabetico(tabla, textClaro.value, "e").join(
       ""
     );
+    contentProc.innerHTML = procMonoAlfa(textClaro.value);
     //Metodo por bloques
   } else if (metodo.value == 2) {
     if (typeof tablaBinaria != "object") alert("Indique el valor de K");
     textCifrado.value = metodoPorBloques(textClaro.value, k.value);
+    contentProc.innerHTML = procBloques(textClaro.value, k.value);
   }
 });
 
@@ -48,6 +52,7 @@ btnDecifrar.addEventListener("click", () => {
   if (metodo.value == 3) {
     icon.className = "fa-solid fa-a";
     const [p, q] = dataPQ.value.split(",");
+
     let textCifrado2 = textCifrado.value.split(",");
     let aux = [];
     textCifrado2.map((e) => {
@@ -116,4 +121,75 @@ function limpiarInputs() {
   tablaBinaria = "";
   tabla = crearTabla();
   dataPQ.value = "";
+  contentProc.innerHTML = "";
+}
+
+function procRSA(p, q) {
+  let z = (p - 1) * (q - 1);
+  let n = p * q;
+  let e = calcularE(z);
+  let d = calcularD(e, z);
+  return `<h3> Metodo RSA</h3>
+<h5>Paso 1: Obtener n = p * q y z = p-1 * q-1 </h5>
+<p>n = ${p} * ${q} = ${p * q}</p>
+<p>z = ${p}-1 * ${q}-1  = ${p - 1} * ${q - 1} = ${(p - 1) * (q - 1)}</p>
+<h5>Paso 2: Encontrar primos relativos, calcular e donde 1 < e < n donde e = MCD(z,e) = 1</h5>
+<p> MCD (${z},${e}) = 1</p>
+<h5>Paso 3: Obtener el valor de d donde  (e * d) mod z = 1 O ((e * d)-1) mod z = 0</h5>
+<p> (${e} * ${d}) mod ${z} =1 </p>
+<h5>Paso 4: Determinar la clave Publica y privado</h5>
+<p> clave publica: (n , e) = (${n},${e})</p>
+<p> clave privada: (n , d) = (${n},${d})</p>
+<h5>Aplicando las claves: </h5>
+<p> Cifrando: c = m<sup>e</sup> mod n </p>
+<p>c = m<sup>${e}</sup> mod ${n} </p>
+<p> Descifrando: m = c<sup>d</sup> mod n </p>
+<p> m = c<sup>${d}</sup> mod ${n} </p>
+
+    `;
+}
+function procBloques(str, k) {
+  k = parseInt(k);
+  let binario = stringABinario(str);
+  let binario2 = binario;
+  while (binario2.length % k > 0) {
+    binario2 = "0" + binario2;
+  }
+  console.log(typeof binario2);
+  let strdividido = dividirString(binario2, k);
+  console.log(strdividido);
+  let encriptado = encriptarBloques(strdividido, tablaBinaria, "e");
+  console.log(encriptado);
+  return `<h3> Metodo por bloques simple</h3>
+<h5>Paso 1: Convertimos el string a codigo ascii</h5>
+<p>${str} = ${charToAscii(str)}</p>
+<p>= ${binario2}</p>
+<h5>Paso 2: Dividimos el resultado en bloques de tamaño k</h5>
+<p>${dividirString(binario2, k)}</p>
+<h5>Paso 3: Generamos al tabla aleatoriamente y encriptamos los bloques</h5>
+<p>${encriptado}</p>
+<h5>Desencriptando Usamos la tabla para desencriptar los bloques</h5>
+<p>${strdividido}</p>
+<h5>Desencriptando: Lo dividimos en bloques de 8 bits</h5>
+<p>${dividirString(binario, 8)}</p>
+<h5>Desencriptando: Lo convertimos a decimal </h5>
+<p>${dividirString(binario, 8).map((e) => {
+    return BinarioADecimal(e);
+  })}</p>
+<h5>Desencriptando: Lo convertimos a caracter utilizando el codigo ascii</h5>
+<p>${str}</p>
+    `;
+}
+function procMonoAlfa(str) {
+  return `<h3> Metodo Mono alfabetico</h3>
+  <h5>Paso 1: se genera la tabla aleatoriamente</h5>
+  <h5>Paso 2: Se busca cada uno de los caracteres en la tabla y se sustituye por el caracter correspondiente encriptado</h5>
+  <p>${str.toUpperCase()} = ${metodoMonoAlfabetico(tabla, str, "e").join(
+    ""
+  )}</p>
+  <h5>Desencriptar: Se busca cada uno de los caracteres en la tabla y se sustituye por el caracter correspondiente desencriptado</h5>
+  <p> ${metodoMonoAlfabetico(tabla, str, "e").join(
+    ""
+  )} = ${str.toUpperCase()} </p>
+  `;
 }
