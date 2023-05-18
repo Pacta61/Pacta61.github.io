@@ -80,6 +80,8 @@ btnTabla.addEventListener("click", () => {
     contentTable.innerHTML = mostrarTabla(tabla);
   } else if (metodo.value == 2) {
     contentTable.innerHTML = mostrarTabla(tablaBinaria);
+  } else if (metodo.value == 3) {
+    window.open("https://elcodigoascii.com.ar/", "ascii");
   }
 });
 
