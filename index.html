@@ -25,6 +25,10 @@
     <aside class="aside" >
       <p class="aside-title">Metodo Grafico</p>
             <div class="funcion">
+              <select name="" id="aside-select">
+                <option value="Maximizar">Maximizar</option>
+                <option value="Minimizar">Minimizar</option>
+              </select>
                 <div class="content-z">
                     <div> Ƶ:  </div>
                     <input id="z-x1" class="content-res-input" type="text" pattern="[0-9]+">
@@ -50,16 +54,21 @@
               </div>
               <div class="content-funciones"></div>
               <button  id="btn" class="btn" onclick="crearGrafica()" > Crear grafica</button>
+              <div class="content-sistema">
+                <div class="sistema">
+                </div>
+              </div>
               
-                <div class="content-table">
-                  <table class="tabla"></table>
-                </div>                
+                
             </div>
     </aside>
     <div id="root" >
         <div id="jxgbox" class="jxgbox" style="margin: auto;  width:94%; height:90vh">
         </div>
-        
+                        
+    </div>
+    <div class="content-table">
+      <table class="tabla"></table>
     </div>
     </div>
 
