@@ -10,7 +10,9 @@ let btnTabla = document.getElementById("btn-verTabla");
 let contentTable = document.getElementById("tabla");
 let btnText = document.querySelector(".btn-icon");
 let icon = document.getElementById("btn-icon");
+let icon2 = document.getElementById("btn-icon2");
 let contentProc = document.getElementById("form-proc");
+let cifradoBloques;
 let tablaBinaria;
 
 k.addEventListener("change", function () {
@@ -22,6 +24,7 @@ k.addEventListener("change", function () {
 
 btnCifrar.addEventListener("click", () => {
   //Cifrar con metodo RSA
+  icon2.className = "fa-solid fa-d";
   if (metodo.value == 3) {
     textCifrado.value = "";
     const [p, q] = dataPQ.value.split(",");
@@ -111,10 +114,33 @@ icon.addEventListener("click", (e) => {
     }
   }
 });
+
+icon2.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (icon2.classList == "fa-solid fa-d") {
+    icon2.className = "fa-solid fa-b";
+    if (textCifrado.value.length > 0) {
+      let aux = textCifrado.value.split(",");
+      cifradoBloques = aux;
+      aux = aux.join("");
+      aux = dividirString(aux, 8);
+      aux = aux.map((e) => {
+        return BinarioADecimal(e);
+      });
+      textCifrado.value = aux;
+    }
+  } else if (icon2.className == "fa-solid fa-b") {
+    icon2.className = "fa-solid fa-d";
+    textCifrado.value = cifradoBloques;
+  }
+});
 function limpiarInputs() {
   if (metodo.value != 1) {
     icon.style.display = "inline-block";
   } else icon.style.display = "none";
+  if (metodo.value == 2) {
+    icon2.style.display = "inline-block";
+  } else icon2.style.display = "none";
   contentTable.innerHTML = "";
   textClaro.value = "";
   textCifrado.value = "";
