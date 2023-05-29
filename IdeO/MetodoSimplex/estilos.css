@@ -1,0 +1,229 @@
+body {
+  background-color: #8fcad6;
+}
+.nav-bar {
+  position: fixed;
+  width: 100%;
+  z-index: 109000;
+  border: 2px solid #151515;
+  display: block;
+}
+
+ul {
+  font-size: 15px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #202020;
+  width: 100%;
+  display: block;
+  border: 2px solide red;
+  align-items: center;
+  font-weight: bold;
+}
+li {
+  display: inline;
+  width: 100%;
+  color: white;
+  margin-left: 5px;
+}
+a:hover {
+  background-color: #514e5c;
+}
+a {
+  display: inline-block;
+  padding: 15px;
+  color: #fff;
+  text-decoration: none;
+}
+#icon {
+  padding-right: 10px;
+  font-size: 15px;
+  z-index: 1000;
+  text-decoration: none;
+  color: white;
+  z-index: 100;
+}
+
+li img {
+  width: 30px;
+  height: 40px;
+  position: absolute;
+  right: 5px;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+#main {
+  max-width: 100%;
+  height: calc(100vh - 48px);
+  position: relative;
+  top: 48px;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: start;
+  box-sizing: border-box;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+}
+.main-title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  height: 1rem;
+}
+#main-form {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.content-funciones {
+  background-color: white;
+  border-radius: 15px;
+  max-width: 80vw;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+input[type="text"]:invalid {
+  animation: shake 300ms;
+  color: rgb(217, 70, 70);
+}
+.funcion {
+  width: 20%;
+  max-width: 80px;
+  font-size: 13px;
+  border: 2px solid #545667;
+  border-radius: 4px;
+  margin: 4px;
+  background-color: #fffdfd;
+  letter-spacing: 3px;
+  font-family: monospace;
+  font-weight: 550;
+  color: #363636;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 3px;
+}
+input:focus {
+  outline: none;
+}
+#main-form-input {
+  width: 15%;
+  font-size: 13px;
+  border: 2px solid #545667;
+  border-radius: 4px;
+  margin: 4px;
+  background-color: #fffdfd;
+  letter-spacing: 3px;
+  font-family: monospace;
+  font-weight: 550;
+  color: #363636;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 3px;
+}
+#content-func {
+  width: 80vw;
+  background-color: white;
+  height: 200px;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+label {
+  font-weight: bold;
+}
+#btn-func {
+  min-width: 25px;
+  max-width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  padding: 4px;
+  border: 2px solid #201426;
+  background-color: #483556;
+}
+#btn-func:hover {
+  background-color: #3d3145;
+}
+#btn-func i {
+  color: white;
+}
+.content-funciones-funcion {
+  border: 1px solid #3f7a8a;
+  display: flex;
+  border-radius: 4px;
+  align-items: center;
+  margin: 4px 0px;
+  font-family: monospace;
+  font-size: 1em;
+  font-weight: 550;
+  height: 22px;
+  align-items: center;
+  padding: 2px;
+  box-sizing: border-box;
+  color: #363636;
+  font-style: italic;
+  letter-spacing: 3px;
+  z-index: 10000;
+  position: relative;
+  justify-content: space-between;
+}
+.content-funciones-funcion i {
+  position: relative;
+  right: 0px;
+  color: #8caab2;
+  top: -3px;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-bottom: 2px;
+}
+.text-funcion {
+  width: calc(100% - 16px);
+  margin-left: 5px;
+}
+.content-funciones-funcion i:hover {
+  color: #42b7da;
+}
+#content-func::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+#content-func::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+#content-func:-webkit-scrollbar-button:increment,
+.contenedor::-webkit-scrollbar-button {
+  display: none;
+}
+
+#content-func::-webkit-scrollbar:horizontal {
+  height: 10px;
+}
+
+#content-func::-webkit-scrollbar-thumb {
+  background-color: #797979;
+  border-radius: 20px;
+  border: 2px solid #f1f2f3;
+}
+
+#content-func:-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+div i {
+  width: 8px;
+  height: 8px;
+  position: relative;
+  left: -0.3em;
+  top: 0.1em;
+  color: #252525;
+}
