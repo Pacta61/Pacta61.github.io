@@ -9,6 +9,7 @@ let idFunc = 0;
 //Genera el formulario con el numero de varibles dado
 btnAcep.addEventListener("click", (e) => {
   e.preventDefault();
+  matriz = [];
   content.innerHTML = "";
   let comp = document.createElement("form-inecuaciones");
   comp.setAttribute("num", numVariables.value);
@@ -16,6 +17,7 @@ btnAcep.addEventListener("click", (e) => {
 
   //Agrega una nueva funcion a la matriz
   document.getElementById("btn-func").addEventListener("click", (e) => {
+    e.preventDefault();
     let aux = [];
     let funcionMatriz = [];
     funcionMatriz.push(idFunc);
@@ -44,11 +46,27 @@ btnAcep.addEventListener("click", (e) => {
 });
 //Elimina una funcion de la matriz
 contentFunc.addEventListener("click", (e) => {
+  e.preventDefault();
   const element = document.getElementById(e.target.id + "a");
+  //Eliminar
   if (e.target.className == "fa-solid fa-trash borrar") {
     element.remove();
     matriz.map((element, pos) => {
       if (element[0] == e.target.id) {
+        matriz[pos] = null;
+      }
+    });
+    //Editar
+  } else if (e.target.className == "fa-solid fa-pen-to-square") {
+    element.remove();
+    matriz.map((element, pos) => {
+      if (element[0] == e.target.id) {
+        for (let i = 1; i <= numVariables.value; i++) {
+          document.getElementById(i).value = element[i];
+        }
+        document.getElementById("res-func").value = element[element.length - 2];
+        document.getElementById("select-func").value =
+          element[element.length - 1];
         matriz[pos] = null;
       }
     });

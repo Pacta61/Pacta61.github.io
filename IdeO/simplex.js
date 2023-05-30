@@ -1,4 +1,4 @@
-/*let valores = [
+let valores = [
   [125, 200, 5000],
   [150, 100, 3000],
   [67, 25, 1000],
@@ -82,4 +82,4 @@ function pivotear(rp) {
   return colum;
 }
 
-console.table(metodoSimplex(valores, z));*/
+console.table(metodoSimplex(valores, z));

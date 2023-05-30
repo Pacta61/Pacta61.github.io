@@ -81,6 +81,7 @@ li img {
   justify-content: center;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 .content-funciones {
   background-color: white;
@@ -132,12 +133,14 @@ input:focus {
   padding: 3px;
 }
 #content-func {
-  width: 80vw;
+  width: 100vw;
   background-color: white;
-  height: 200px;
+  height: 100px;
   padding: 10px;
   border-radius: 5px;
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  margin: 0px 150px;
 }
 label {
   font-weight: bold;
@@ -226,4 +229,45 @@ div i {
   left: -0.3em;
   top: 0.1em;
   color: #252525;
+}
+#select-type {
+  width: 10%;
+  min-width: 110px;
+  border: 2px solid #545667;
+  border-radius: 4px;
+  margin: 4px;
+  background-color: #fffdfd;
+  font-weight: 550;
+  color: #363636;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+  position: relative;
+  padding: 3px;
+}
+.content-select-type {
+  display: block;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#btn-resol {
+  width: 80px;
+  height: 25px;
+}
+.content-res {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  margin: 0px 150px;
+  display: none;
+}
+.btn-next {
+  width: 80px;
+  height: 25px;
+  display: none;
+}
+#content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

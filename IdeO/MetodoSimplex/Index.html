@@ -28,13 +28,23 @@
     <main id="main">
       <h1 class="main-title">Metodo Simplex/DosFases</h1>
       <form id="main-form" action="">
+        <div class="content-select-type">
+          <label for="select-type">Objetivo: </label>
+          <select name="" id="select-type">
+            <option value="1">Maximizar</option>
+            <option value="2">Minimizar</option>
+          </select>
+        </div>
+
         <label for="main-form-input">Numero de variables: </label>
         <input type="text" name="" id="main-form-input" />
         <button id="input-btn">Aceptar</button>
+        <div id="content"></div>
+        <div id="content-func"></div>
+        <button id="btn-resol">Resolver</button>
       </form>
-
-      <div id="content"></div>
-      <div id="content-func"></div>
+      <div class="content-res"></div>
+      <button class="btn-next">Continuar</button>
     </main>
     <script
       src="https://kit.fontawesome.com/1c637ee8ed.js"
@@ -42,5 +52,6 @@
     ></script>
     <script src="./form-inecuacion.js"></script>
     <script src="./main.js"></script>
+    <!---<script src="../simplex.js"></script>-->
   </body>
 </html>
