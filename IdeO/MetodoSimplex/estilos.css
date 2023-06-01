@@ -321,3 +321,6 @@ th {
   font-size: 14px;
   z-index: 100;
 }
+.fa-pen-to-square::before {
+  display: none;
+}
