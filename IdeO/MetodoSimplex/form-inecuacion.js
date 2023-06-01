@@ -24,9 +24,7 @@ class component2 extends HTMLElement {
     <div class="content-funciones">
     ${crearComponente(this.getAttribute("num")).join("+")}
     <select name="" id="select-func">
-        <option value="≥">≥</option>
         <option value="≤">≤</option>
-        <option value="=">=</option>
       </select>
     <input type="text" name="" class="funcion" id="res-func" />
     <button id="btn-func"><i class="fa-solid fa-check"></i></button>

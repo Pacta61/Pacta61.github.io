@@ -3,6 +3,7 @@ let btnAcep = document.getElementById("input-btn");
 let formFunc = document.getElementById("form-func");
 let content = document.getElementById("content");
 let contentFunc = document.getElementById("content-func");
+let btnResol = document.getElementById("btn-resol");
 let matriz = [];
 let idFunc = 0;
 
@@ -46,6 +47,7 @@ btnAcep.addEventListener("click", (e) => {
 });
 //Elimina una funcion de la matriz
 contentFunc.addEventListener("click", (e) => {
+  2;
   e.preventDefault();
   const element = document.getElementById(e.target.id + "a");
   //Eliminar
@@ -72,6 +74,23 @@ contentFunc.addEventListener("click", (e) => {
     });
   }
   matriz = matriz.filter((el) => el !== null);
+});
+
+btnResol.addEventListener("click", (evt) => {
+  evt.preventDefault();
+  contentRes.innerHTML = "";
+  matriz = matriz.map((e) => {
+    let aux = e.filter((el) => typeof el != "number");
+    aux.pop();
+    return aux;
+  });
+  let z = [
+    document.getElementById("z-x1").value,
+    document.getElementById("z-x2").value,
+  ];
+  console.table(metodoSimplex(matriz, z));
+  console.log(matriz);
+  console.log(z);
 });
 
 function clearInputs() {
