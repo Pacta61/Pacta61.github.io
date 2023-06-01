@@ -2,8 +2,9 @@
 function crearComponente(n) {
   let res = [];
   for (let i = 1; i <= n; i++) {
-    res.push(`<label>X<sub>${i}</sub></label>
-    <input id="${i}" type="text" name="" class="funcion" />`);
+    res.push(`
+    <input id="${i}" type="text" name="" class="funcion" />
+    <label>X<sub>${i}</sub></label>`);
   }
   return res;
 }

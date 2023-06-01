@@ -232,9 +232,8 @@ const content = document.querySelector(".content-funciones");
 content.addEventListener(
   "click",
   (e) => {
-    const element = document.getElementById(e.target.id);
+    const element = document.getElementById(e.target.id + "a");
     //ELiminar
-    console.log(e.target.className);
     if (e.target.className == "fa-solid fa-trash borrar") {
       element.remove();
       functions.map((element, pos) => {

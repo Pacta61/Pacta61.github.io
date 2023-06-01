@@ -15,6 +15,9 @@ btnAcep.addEventListener("click", (e) => {
   let comp = document.createElement("form-inecuaciones");
   comp.setAttribute("num", numVariables.value);
   content.appendChild(comp);
+  let compz = document.createElement("form-z");
+  compz.setAttribute("num", numVariables.value);
+  document.querySelector(".content-z").appendChild(compz);
 
   //Agrega una nueva funcion a la matriz
   document.getElementById("btn-func").addEventListener("click", (e) => {
@@ -79,16 +82,16 @@ contentFunc.addEventListener("click", (e) => {
 btnResol.addEventListener("click", (evt) => {
   evt.preventDefault();
   contentRes.innerHTML = "";
-  matriz = matriz.map((e) => {
+  let matriz2 = matriz.map((e) => {
     let aux = e.filter((el) => typeof el != "number");
     aux.pop();
     return aux;
   });
-  let z = [
-    document.getElementById("z-x1").value,
-    document.getElementById("z-x2").value,
-  ];
-  console.table(metodoSimplex(matriz, z));
+  let z = [];
+  for (let i = 1; i <= numVariables.value; i++) {
+    z.push(document.getElementById(i + "z").value);
+  }
+  console.table(metodoSimplex(matriz2, z));
   console.log(matriz);
   console.log(z);
 });
