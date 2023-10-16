@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Ing. Economica</title>
+</head>
+<body>
+    <h2 class="titulo">Calculadora de VAE, TIR, VPN y PRI</h2>
+    <form action="" id="formulario">
+        <div id="datos">
+            <div class="cell">
+                <label for="inv-inicial">Inversión inicial:</label>
+                <input type="text" name="" id="inv-inicial">
+            </div>
+            <div class="cell">
+                <label for="tasa">Tasa de interés: </label>
+                <input type="number" name="" id="tasa">
+            </div>
+        </div>
+        <hr>
+        <main>
+            <div id="flujo">
+                <div id="content-año">
+                    <div class="input-año">
+                        <label for="1"> Año 1:</label>
+                        <input type="number" name="" id="1">
+                    </div>
+                    <div class="input-año">
+                        <label for="2"> Año 2:</label>
+                        <input type="number" name="" id="2">
+                    </div>
+                    <div class="input-año">
+                        <label for="3"> Año 3:</label>
+                        <input type="number" name="" id="3">
+                    </div>
+                    <div class="input-año">
+                        <label for="3"> Año 4:</label>
+                        <input type="number" name="" id="4">
+                    </div>
+                    <div class="input-año">
+                        <label for="3"> Año 5:</label>
+                        <input type="number" name="" id="5">
+                    </div>
+                </div>
+                <button class="btn" id="btn-año">Agregar Año</button>
+            </div>
+            <div id="config">
+                <label for="opciones">Calculo: </label>
+                <select name="" id="opciones">
+                    <option value="1">VPN</option>
+                    <option value="2">PRI</option>
+                    <option value="3">VAE</option>
+                    <option value="4">TIR</option>
+                </select>
+                <button id="btn-calcular" class="btn">Calcular</button>
+                <div id="tasa2">
+                    <label for="t2">Tasa de interés 2: </label>
+                    <input type="number" name="" id="t2">
+                </div>
+                <p id="res"></p>
+            </div>
+        </main>
+        
+    </form>
+    <script src="main.js"></script>
+    <script src="metodos.js"></script>
+</body>
+</html>
