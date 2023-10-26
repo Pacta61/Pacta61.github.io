@@ -39,7 +39,7 @@ function obtenerDatos(){
     for (let i = 1; i <= numAños; i++) {
         valores.push(parseFloat(document.getElementById(i).value))
     }
-    valores = valores.filter(e => e)
+    valores = valores.filter(e => e != undefined)
     return {valores : valores,
             invInicial: parseFloat( document.getElementById("inv-inicial").value), 
             tasa: parseFloat(document.getElementById("tasa").value)
