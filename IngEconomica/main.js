@@ -14,24 +14,19 @@ btnCalcular.addEventListener("click",(e)=>{
     e.preventDefault();
     let datos = obtenerDatos();
     let opcSelec = parseInt(opc.value);
-    console.log(datos);
     res.style.display = "flex"
     if(opcSelec == 2){
         res.innerText = "P.R.I = " + toTime(parseFloat(PRI(datos.valores,datos.invInicial)));
     }else if (opcSelec == 1){
         res.innerText = "V.P.N = " + VPN(datos.valores,datos.tasa,datos.invInicial);
     }else if (opcSelec == 4){
-        res.innerText = "T.I.R = " + TIR(datos.valores,datos.tasa, parseFloat(t2.value), datos.invInicial);
+        res.innerText = "T.I.R = " + TIR( {   inversionInicial : datos.invInicial,    flujosDeEfectivo : datos.valores}).tir;
     }else if(opcSelec == 3){
          res.innerText = "V.A.E = " + VAE(datos.valores,datos.tasa,datos.invInicial);
     }
     
 })
-opc.addEventListener("change",()=>{
-    if(opc.value == "4"){
-        contentT2.style.display = "flex";
-    }else contentT2.style.display = "none";
-})
+
 
 
 function obtenerDatos(){

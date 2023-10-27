@@ -12,13 +12,7 @@ function VPN(valores, tasaInteres, II){
     return sum;
 }
 
-function TIR(valores, tasa1, tasa2, II){
-    let t1 = tasa1 / 100;
-    let t2 = tasa2 / 100;
-    let res = t1 + (t2 - t1)*(VPN(valores,tasa1,II)/(VPN(valores,tasa1,II) - VPN(valores,tasa2,II)));
-    return res*100;
 
-}
 
 function PRI(valores,II){
     let table = [], FEA = [], utilidad = [];
@@ -31,7 +25,7 @@ function PRI(valores,II){
     b = utilidad[añoRecu -1 ]
     c = valores[añoRecu];
     let res = añoRecu + ((II - b)/ c )
-    return res ;
+    return res.toFixed(3) ;
 }
 
 function toTime(num){
@@ -57,7 +51,6 @@ function toTime(num){
     return res.join(" ");
 }
 
-console.log(PRI(valores,II));
 
 function VAE(valores, tasa, II){
     let vpn = VPN(valores,tasa,II)
@@ -66,4 +59,39 @@ function VAE(valores, tasa, II){
 }
 
 
-console.log(VAE(valores,tasaInteres1,II));  
+
+
+
+TIR = (problema = {}) => {
+    let tir = 0;
+    let maxIteraciones = 1000; 
+    let precision = 0.00001; 
+    let tirMin = 0;
+    let tirMax = 100;
+    let historial = [];
+    for (let i = 0; i < maxIteraciones; i++) {
+        tir = (tirMin + tirMax) / 2; 
+        let vpn = -problema.inversionInicial;
+        for (let j = 0; j < problema.flujosDeEfectivo.length; j++) {
+            vpn += (problema.flujosDeEfectivo[j]) / Math.pow((1 + (tir / 100)), j + 1);
+        }
+        historial.push(
+            {
+                "tir": tir,
+                "vpn": vpn
+            }
+        )
+        if (Math.abs(vpn) < precision) {
+            return {
+                "tir": tir,
+                "historial": historial
+            }
+        }
+        if (vpn > 0) {
+            tirMin = tir;
+        } else {
+            tirMax = tir;
+        }
+    }
+    return NaN;
+}
