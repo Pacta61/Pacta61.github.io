@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="esp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+</head>
+<body>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #292a4e;
+}
+.container {
+    text-align: center;
+    color: burlywood;
+}
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-gap: 5px;
+    margin: 20px;
+    background-color: #5f5aa3;
+   
+}
+.celda {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    background-color: #292a4e;
+    
+}
+.status {
+    font-size: 20px;
+    margin-top: 10px;
+}
+button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 5px 14px;
+    font-size: 16pt;
+    font-weight: bold;
+    background-color: rgb(80, 228, 127);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+    </style>
+    <div class="container">
+        <h1>Tic Tac Toe</h1>
+        <div id="tablero" class="tablero">
+            <div class="celda" onclick="handleClick(0)"></div>
+            <div class="celda" onclick="handleClick(1)"></div>
+            <div class="celda" onclick="handleClick(2)"></div>
+            <div class="celda" onclick="handleClick(3)"></div>
+            <div class="celda" onclick="handleClick(4)"></div>
+            <div class="celda" onclick="handleClick(5)"></div>
+            <div class="celda" onclick="handleClick(6)"></div>
+            <div class="celda" onclick="handleClick(7)"></div>
+            <div class="celda" onclick="handleClick(8)"></div>
+        </div>
+        <p id="status" class="status"></p>
+        <button onclick="reiniciarJuego()">Reiniciar</button>
+    </div>
+    <script>
+        let turno = "X";
+            let tablero = ["", "", "", "", "", "", "", "", ""];
+            let gameActive = true;
+
+            function handleClick(index) {
+                if (tablero[index] === "" && gameActive) {
+                    tablero[index] = turno;
+                    actualizar();
+                    revisarGanador();
+                    cambiarJugador();
+                }
+            }
+
+            function actualizar() {
+                const cells = document.querySelectorAll(".celda");
+                cells.forEach((cell, index) => {
+                    cell.textContent = tablero[index];
+                });
+            }
+
+            function cambiarJugador() {
+                turno = turno === "X" ? "O" : "X";
+            }
+
+            function revisarGanador() {
+                const combinaciones = [
+                    [0, 1, 2],
+                    [3, 4, 5],
+                    [6, 7, 8],
+                    [0, 3, 6],
+                    [1, 4, 7],
+                    [2, 5, 8],
+                    [0, 4, 8],
+                    [2, 4, 6],
+                ];
+                for (const combinacion of combinaciones) {
+                    const [a, b, c] = combinacion;
+                    if (tablero[a] && tablero[a] === tablero[b] && tablero[a] === tablero[c]) {
+                        mostrarGanador(tablero[a]);
+                        return;
+                    }
+                }
+                if (!tablero.includes("")) {
+                    mostrarEmpate();
+                }
+            }
+            function mostrarGanador(jugador) {
+                document.getElementById("status").textContent = `Jugador ${jugador} Gana!`;
+                gameActive = false;
+            }
+
+            function mostrarEmpate() {
+                document.getElementById("status").textContent = "Empate!";
+                gameActive = false;
+            }
+
+            function reiniciarJuego() {
+                turno = "X";
+                tablero = ["", "", "", "", "", "", "", "", ""];
+                gameActive = true;
+                document.getElementById("status").textContent = "";
+                actualizar();
+            }
+    </script>
+</body>
+</html>
